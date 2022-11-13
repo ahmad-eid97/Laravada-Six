@@ -127,7 +127,17 @@ export default {
     name: 'Policy',
     components: {
         AppPolicyHeading
-    }
+    },
+    async asyncData({ $axios }) {
+        const policyData = {}
+        const POLICY_DATA = await $axios.get('/pages/4');
+
+        if (POLICY_DATA.success) policyData = POLICY_DATA.data.data
+
+        return {
+            policyData
+        }
+    },
 }
 </script>
 
