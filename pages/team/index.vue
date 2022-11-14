@@ -10,7 +10,17 @@ import AppTeamHeading from '../../components/team/AppTeamHeading.vue'
 import AppTeamMembers from '../../components/team/AppTeamMembers.vue'
 export default {
     components: { AppTeamHeading, AppTeamMembers },
-    name: 'Team'
+    name: 'Team',
+    async asyncData({ $axios }) {
+      const team = {}
+      const TEAM = await $axios.get('/teams');
+
+      if (TEAM.success) team = TEAM.data.data
+
+      return {
+          team
+      }
+    },
 }
 </script>
 

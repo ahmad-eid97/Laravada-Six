@@ -14,7 +14,24 @@ import AppTestimonialsParteners from '../../components/testimonials/AppTestimoni
 import AppTestimonialsTeam from '../../components/testimonials/AppTestimonialsTeam.vue'
 export default {
     components: { AppTestimonialsHeading, AppTestimonialsItems, AppTestimonialsParteners, AppTestimonialsTeam },
-    name: 'Testimonials'
+    name: 'Testimonials',
+    async asyncData({ $axios }) {
+      const team = {}
+      const partners = {}
+
+      const TEAM = await $axios.get('/teams');
+
+      if (TEAM.success) team = TEAM.data.data
+
+      const PARTNERS = await $axios.get('/partners');
+
+      if (PARTNERS.success) partners = PARTNERS.data.data
+
+      return {
+          team,
+          partners
+      }
+    },
 }
 </script>
 
