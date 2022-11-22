@@ -31,15 +31,12 @@ import AppServiceSideTags from '../../components/service/AppServiceSideTags.vue'
 export default {
   name: 'Service',
   components: { AppServiceHeading, AppServiceBody, AppServiceSideServices, AppServiceSideTags, AppServiceGallery, AppServiceSideArchive },
-  async asyncData({ $axios }) {
-    const serviceDetails = {}
-    const SERVICE_DETAILS = await $axios.get('/services');
-
-    if (SERVICE_DETAILS.success) serviceDetails = SERVICE_DETAILS.data.data
-
-    return {
-        serviceDetails
-    }
+  async asyncData({ $axios, params }) {
+    return await $axios.get(`/services/${params.id}`).then((res) => {
+        return {
+            serviceDetails: res.data.data
+        }
+    });
   },
 
 }

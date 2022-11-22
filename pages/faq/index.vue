@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <app-faq-heading></app-faq-heading>
-        <app-faq-faqs></app-faq-faqs>
+        <app-faq-faqs :faqs="faqs"></app-faq-faqs>
     </div>
 </template>
 
@@ -12,14 +12,11 @@ export default {
   name: 'Faq',
   components: { AppFaqHeading, AppFaqFaqs },
   async asyncData({ $axios }) {
-    const faqs = {}
-    const FAQS_RES = await $axios.get('/faqs');
-
-    if (FAQS_RES.success) faqs = FAQS_RES.data.data
-
-    return {
-        faqs
-    }
+    return await $axios.get('/faqs').then(res => {
+      return {
+        faqs: res.data.data
+      }
+    });
   },
 }
 </script>

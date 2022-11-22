@@ -28,15 +28,12 @@ import AppBlogGallery from '../../components/blog/AppBlogGallery.vue'
 import AppBlogSideArchive from '../../components/blog/AppBlogSideArchive.vue'
 export default {
   components: { AppBlogHeading, AppBlogBody, AppBlogSideBlogs, AppBlogSideTags, AppBlogGallery, AppBlogSideArchive },
-  async asyncData({ $axios }) {
-    const blogDetails = {}
-    const BLOG_RES = await $axios.get('/blogs/:id');
-
-    if (BLOG_RES.success) blogDetails = BLOG_RES.data.data
-
-    return {
-        blogDetails
-    }
+  async asyncData({ $axios, params }) {
+    return await $axios.get(`/blogs/${params.id}`).then((res) => {
+      return {
+        blogDetails: res.data.data
+      }
+    });
   },
 }
 </script>

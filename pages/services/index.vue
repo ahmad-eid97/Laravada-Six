@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <app-services-heading></app-services-heading>
-        <app-services-items></app-services-items>
+        <app-services-items :services="servicesData"></app-services-items>
     </div>
 </template>
 
@@ -12,14 +12,11 @@ export default {
   name: 'Services',
   components: { AppServicesHeading, AppServicesItems },
   async asyncData({ $axios }) {
-    const services = {}
-    const SERVICES_RES = await $axios.get('/services');
-
-    if (SERVICES_RES.success) services = SERVICES_RES.data.data
-
-    return {
-        services
-    }
+    return await $axios.get('/services').then((res) => {
+      return {
+        servicesData: res.data.data
+      }
+    });
   },
 
 }

@@ -10,7 +10,7 @@
 
         <app-about-security></app-about-security>
 
-        <app-about-parteners></app-about-parteners>
+        <app-about-parteners :partners="partners"></app-about-parteners>
 
         <app-about-countdown></app-about-countdown>
   </div>
@@ -39,13 +39,13 @@ export default {
     AppAboutCountdown
   },
   async asyncData({ $axios }) {
-    const aboutDetails = {}
     const ABOUT_DETAILS = await $axios.get('/pages/1');
 
-    if (ABOUT_DETAILS.success) aboutDetails = ABOUT_DETAILS.data.data
+    const PARTNERS = await $axios.get('/partners');
 
     return {
-      aboutDetails
+      aboutDetails: ABOUT_DETAILS.data.data,
+      partners: PARTNERS.data.data
     }
   },
 }

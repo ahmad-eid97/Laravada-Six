@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <app-blogs-heading></app-blogs-heading>
-        <app-blogs-items></app-blogs-items>
+        <app-blogs-items :blogs="blogs"></app-blogs-items>
     </div>
 </template>
 
@@ -12,14 +12,11 @@ export default {
   name: 'Blogs',
   components: { AppBlogsHeading, AppBlogsItems },
   async asyncData({ $axios }) {
-    const blogs = {}
-    const BLOGS_RES = await $axios.get('/blogs');
-
-    if (BLOGS_RES.success) blogs = BLOGS_RES.data.data
-
-    return {
-        blogs
-    }
+    return await $axios.get('/blogs').then((res) => {
+      return {
+        blogs: res.data.data
+      }
+    });
   },
 }
 </script>

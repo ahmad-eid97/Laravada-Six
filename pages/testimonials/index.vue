@@ -2,8 +2,8 @@
     <div class="home">
         <app-testimonials-heading></app-testimonials-heading>
         <app-testimonials-items></app-testimonials-items>
-        <app-testimonials-parteners></app-testimonials-parteners>
-        <app-testimonials-team></app-testimonials-team>
+        <app-testimonials-parteners :partners="partners"></app-testimonials-parteners>
+        <app-testimonials-team :team="team"></app-testimonials-team>
     </div>
 </template>
 
@@ -16,20 +16,14 @@ export default {
     components: { AppTestimonialsHeading, AppTestimonialsItems, AppTestimonialsParteners, AppTestimonialsTeam },
     name: 'Testimonials',
     async asyncData({ $axios }) {
-      const team = {}
-      const partners = {}
 
       const TEAM = await $axios.get('/teams');
 
-      if (TEAM.success) team = TEAM.data.data
-
       const PARTNERS = await $axios.get('/partners');
 
-      if (PARTNERS.success) partners = PARTNERS.data.data
-
       return {
-          team,
-          partners
+          team: TEAM.data.data,
+          partners: PARTNERS.data.data
       }
     },
 }

@@ -11,52 +11,15 @@
                     <div class="faq-content">
                         <div class="faq-accordion">
                             <div class="accordion">
-                                <b-card no-body class="accordion-item">
-                                    <b-card-header header-tag="header" class="accordion-title" v-b-toggle.accordion-1 role="tab">
+                                <b-card v-for="faq in faqs.fags.slice(0, Math.ceil(faqs.fags.length / 2))" :key="faq.id" no-body class="accordion-item">
+                                    <b-card-header header-tag="header" class="accordion-title" v-b-toggle="'accordion-'+faq.id" role="tab">
                                         <font-awesome-icon icon="fa-solid fa-circle-plus" />
                                         <font-awesome-icon icon="fa-solid fa-circle-minus" />
-                                        What is a Managed Security Services?
+                                        {{faq.question}}
                                     </b-card-header>
-                                    <b-collapse class="accordion-content" id="accordion-1" visible accordion="my-accordion" role="tabpanel">
+                                    <b-collapse class="accordion-content" :id="`accordion-${faq.id}`" visible accordion="my-accordion" role="tabpanel">
                                         <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at diam leo. Mauris a ante placerat,
-                                            dignissim orci eget, viverra ante. Mauris ornare pellentesque augue.
-                                        </p>
-                                    </b-collapse>
-                                </b-card>
-                                <b-card no-body class="accordion-item">
-                                    <b-card-header header-tag="header" class="accordion-title" v-b-toggle.accordion-2 role="tab">
-                                        <font-awesome-icon icon="fa-solid fa-circle-plus" />
-                                        <font-awesome-icon icon="fa-solid fa-circle-minus" />
-                                        What is a Data Analysis?
-                                    </b-card-header>
-                                    <b-collapse class="accordion-content" id="accordion-2" visible accordion="my-accordion" role="tabpanel">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at diam leo. Mauris a ante placerat, dignissim orci eget, viverra ante. Mauris ornare pellentesque augue.
-                                        </p>
-                                    </b-collapse>
-                                </b-card>
-                                <b-card no-body class="accordion-item">
-                                    <b-card-header header-tag="header" class="accordion-title" v-b-toggle.accordion-3 role="tab">
-                                        <font-awesome-icon icon="fa-solid fa-circle-plus" />
-                                        <font-awesome-icon icon="fa-solid fa-circle-minus" />
-                                         How Can Make Secure My Website? 
-                                    </b-card-header>
-                                    <b-collapse class="accordion-content" id="accordion-3" visible accordion="my-accordion" role="tabpanel">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at diam leo. Mauris a ante placerat, dignissim orci eget, viverra ante. Mauris ornare pellentesque augue. 
-                                        </p>
-                                    </b-collapse>
-                                </b-card>
-                                <b-card no-body class="accordion-item">
-                                    <b-card-header header-tag="header" class="accordion-title" v-b-toggle.accordion-4 role="tab">
-                                        <font-awesome-icon icon="fa-solid fa-circle-plus" />
-                                        <font-awesome-icon icon="fa-solid fa-circle-minus" />
-                                         What is a Infrastructure? 
-                                    </b-card-header>
-                                    <b-collapse class="accordion-content" id="accordion-4" visible accordion="my-accordion" role="tabpanel">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at diam leo. Mauris a ante placerat, dignissim orci eget, viverra ante. Mauris ornare pellentesque augue. 
+                                            {{faq.answer}}
                                         </p>
                                     </b-collapse>
                                 </b-card>
@@ -68,51 +31,15 @@
                     <div class="faq-content">
                         <div class="faq-accordion">
                             <div class="accordion">
-                                <b-card no-body class="accordion-item">
-                                    <b-card-header header-tag="header" class="accordion-title" v-b-toggle.accordion-5 role="tab">
+                                <b-card v-for="faq in faqs.fags.slice(Math.ceil(faqs.fags.length / 2), faqs.fags.length)" :key="faq.id" no-body class="accordion-item">
+                                    <b-card-header header-tag="header" class="accordion-title" v-b-toggle="'accordion-'+faq.id" role="tab">
                                         <font-awesome-icon icon="fa-solid fa-circle-plus" />
                                         <font-awesome-icon icon="fa-solid fa-circle-minus" />
-                                          How Can We Help Your Business? 
+                                        {{faq.question}}
                                     </b-card-header>
-                                    <b-collapse class="accordion-content" id="accordion-5" visible accordion="my-accordion" role="tabpanel">
+                                    <b-collapse class="accordion-content" :id="`accordion-${faq.id}`" visible accordion="my-accordion" role="tabpanel">
                                         <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at diam leo. Mauris a ante placerat, dignissim orci eget, viverra ante. Mauris ornare pellentesque augue. 
-                                        </p>
-                                    </b-collapse>
-                                </b-card>
-                                <b-card no-body class="accordion-item">
-                                    <b-card-header header-tag="header" class="accordion-title" v-b-toggle.accordion-6 role="tab">
-                                        <font-awesome-icon icon="fa-solid fa-circle-plus" />
-                                        <font-awesome-icon icon="fa-solid fa-circle-minus" />
-                                           Why It Staff Management? 
-                                    </b-card-header>
-                                    <b-collapse class="accordion-content" id="accordion-6" visible accordion="my-accordion" role="tabpanel">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at diam leo. Mauris a ante placerat, dignissim orci eget, viverra ante. Mauris ornare pellentesque augue. 
-                                        </p>
-                                    </b-collapse>
-                                </b-card>
-                                <b-card no-body class="accordion-item">
-                                    <b-card-header header-tag="header" class="accordion-title" v-b-toggle.accordion-7 role="tab">
-                                        <font-awesome-icon icon="fa-solid fa-circle-plus" />
-                                        <font-awesome-icon icon="fa-solid fa-circle-minus" />
-                                            How Working Process Is Simplified? 
-                                    </b-card-header>
-                                    <b-collapse class="accordion-content" id="accordion-7" visible accordion="my-accordion" role="tabpanel">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at diam leo. Mauris a ante placerat, dignissim orci eget, viverra ante. Mauris ornare pellentesque augue. 
-                                        </p>
-                                    </b-collapse>
-                                </b-card>
-                                <b-card no-body class="accordion-item">
-                                    <b-card-header header-tag="header" class="accordion-title" v-b-toggle.accordion-8 role="tab">
-                                        <font-awesome-icon icon="fa-solid fa-circle-plus" />
-                                        <font-awesome-icon icon="fa-solid fa-circle-minus" />
-                                             Product Engineering & Services? 
-                                    </b-card-header>
-                                    <b-collapse class="accordion-content" id="accordion-8" visible accordion="my-accordion" role="tabpanel">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at diam leo. Mauris a ante placerat, dignissim orci eget, viverra ante. Mauris ornare pellentesque augue. 
+                                            {{faq.answer}}
                                         </p>
                                     </b-collapse>
                                 </b-card>
@@ -127,7 +54,8 @@
 
 <script>
 export default {
-    name: 'AppFaqFaqs'
+    name: 'AppFaqFaqs',
+    props: ["faqs"]
 }
 </script>
 

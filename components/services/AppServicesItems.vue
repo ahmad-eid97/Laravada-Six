@@ -9,129 +9,18 @@
                 </p>
             </div>
             <div class="row pt-45">
-                <div class="col-lg-3 col-sm-6">
+                <div v-for="service in services.services" :key="service.id" class="col-lg-3 col-sm-6 col-md-4" @click="$router.push(`/service/${service.id}`)">
                     <div class="services-card services-style-bg">
                         <div class="icon">
                             <font-awesome-icon icon="fa-solid fa-person-dots-from-line" />
                         </div>
                         <h3>
-                            <router-link to="service">IT Consulting</router-link>
+                            <router-link to="service">{{service.title}}</router-link>
                         </h3>
-                        <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendauctor nisi el.</p>
+                        <p>{{service.description}}</p>
                         <router-link to="service" class="learn-btn">Learn More 
                             <i class="bx bx-chevron-right"></i>
                         </router-link>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="services-card services-style-bg">
-                        <div class="icon">
-                            <font-awesome-icon icon="fa-solid fa-cloud" />
-                        </div>
-                        <h3>
-                            <router-link to="service">Cloud Computing</router-link>
-                        </h3>
-                        <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendauctor nisi el.</p>
-                        <router-link to="service" class="learn-btn">Learn More 
-                            <i class="bx bx-chevron-right"></i>
-                        </router-link>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="services-card services-style-bg">
-                        <div class="icon">
-                            <font-awesome-icon icon="fa-solid fa-laptop-code" />
-                        </div>
-                        <h3>
-                            <router-link to="service">Web Development</router-link>
-                        </h3>
-                        <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendauctor nisi el. </p>
-                        <router-link to="service" class="learn-btn">Learn More 
-                            <i class="bx bx-chevron-right"></i>
-                        </router-link>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="services-card services-style-bg">
-                        <div class="icon">
-                            <font-awesome-icon icon="fa-solid fa-chart-area" />
-                        </div>
-                        <h3>
-                            <router-link to="service">Business Reform</router-link>
-                        </h3>
-                        <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendauctor nisi el.</p>
-                        <router-link to="service" class="learn-btn">Learn More 
-                            <i class="bx bx-chevron-right"></i>
-                        </router-link>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="services-card services-style-bg">
-                        <div class="icon">
-                            <font-awesome-icon icon="fa-solid fa-code-branch" />
-                        </div>
-                        <h3>
-                            <router-link to="service">Infrastructure</router-link>
-                        </h3>
-                        <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendauctor nisi el.</p>
-                        <router-link to="service" class="learn-btn">Learn More 
-                            <i class="bx bx-chevron-right"></i>
-                        </router-link>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="services-card services-style-bg">
-                        <div class="icon">
-                            <font-awesome-icon icon="fa-solid fa-folder-tree" />
-                        </div>
-                        <h3>
-                            <router-link to="service">Data Analysis</router-link>
-                        </h3>
-                        <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendauctor nisi el.</p>
-                        <router-link to="service" class="learn-btn">Learn More 
-                            <i class="bx bx-chevron-right"></i>
-                        </router-link>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="services-card services-style-bg">
-                        <div class="icon">
-                            <font-awesome-icon icon="fa-solid fa-gears" />
-                        </div>
-                        <h3>
-                            <router-link to="service">Manage IT Service</router-link>
-                        </h3>
-                        <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendauctor nisi el.</p>
-                        <router-link to="service" class="learn-btn">Learn More 
-                            <i class="bx bx-chevron-right"></i>
-                        </router-link>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="services-card services-style-bg">
-                        <div class="icon">
-                            <font-awesome-icon icon="fa-solid fa-briefcase" />
-                        </div>
-                        <h3>
-                            <router-link to="service">Business Security</router-link>
-                        </h3>
-                        <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendauctor nisi el.</p>
-                        <router-link to="service" class="learn-btn">Learn More 
-                            <i class="bx bx-chevron-right"></i>
-                        </router-link>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12 text-center">
-                    <div class="pagination-area">
-                        <a href="#" class=" page-numbers">
-                            <font-awesome-icon icon="fa-solid fa-arrow-left" />
-                        </a>
-                        <span class="page-numbers current" aria-current="page">1</span>
-                        <a href="#" class="page-numbers">2</a>
-                        <a href="#" class="page-numbers">3</a>
-                        <a href="#" class=" page-numbers">
-                            <font-awesome-icon icon="fa-solid fa-arrow-right" />
-                        </a>
                     </div>
                 </div>
             </div>
@@ -141,7 +30,7 @@
 
 <script>
 export default {
-
+    props: ["services"]
 }
 </script>
 
