@@ -12,12 +12,12 @@
                     :options="swiperOption"
                 >
 
-                    <swiper-slide>
+                    <swiper-slide v-for="client in clients.testimonials" :key="client.id">
                         <div class="item">
                             <div class="row align-items-center">
                                 <div class="col-lg-6">
                                     <div class="clients-slider-img">
-                                        <img src="/assets/images/client-1.png" alt="Images">
+                                        <img :src="client.image" alt="Images">
                                         <div class="clients-slider-circle"></div>
                                     </div>
                                 </div>
@@ -27,35 +27,10 @@
                                             <font-awesome-icon icon="fa-solid fa-quote-left" />
                                         </div>
                                         <p>
-                                            “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ligula eget lectus consequat volutpat. Donec elit libero, finibus eget scelerisque sed, tempor sit amet erat. Pellentesque tincidunt a purus sit amet ullamcorper. Vestibulum ultrices ligula in pharetra sagittis. Quisque lacinia magna dolor, at tempus sem consequat at.”
+                                            {{client.description}}
                                         </p>
-                                        <h3>Jonthon Martin</h3>
-                                        <span>App Developer</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </swiper-slide>
-
-                    <swiper-slide>
-                        <div class="item">
-                            <div class="row align-items-center">
-                                <div class="col-lg-6">
-                                    <div class="clients-slider-img">
-                                        <img src="/assets/images/client-2.png" alt="Images">
-                                        <div class="clients-slider-circle"></div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="clients-slider-content">
-                                        <div class="svg">
-                                            <font-awesome-icon icon="fa-solid fa-quote-left" />
-                                        </div>
-                                        <p>
-                                            “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ligula eget lectus consequat volutpat. Donec elit libero, finibus eget scelerisque sed, tempor sit amet erat. Pellentesque tincidunt a purus sit amet ullamcorper. Vestibulum ultrices ligula in pharetra sagittis. Quisque lacinia magna dolor, at tempus sem consequat at.”
-                                        </p>
-                                        <h3>Jonthon Martin</h3>
-                                        <span>App Developer</span>
+                                        <h3>{{client.title}}</h3>
+                                        <span>{{client.job}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -76,12 +51,13 @@ export default {
     data() {
         return {
             swiperOption: {
-            loop: true,
-            slidesPerView: 1,
-            spaceBetween: 50,
-            },
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 50,
+            }
         }
-    }
+    },
+    props: ["clients"]
 }
 </script>
 
@@ -169,12 +145,6 @@ export default {
 .clients-area p {
     color: var(--main-color);
 }
-
-.clients-slider-content {
-    padding: 40px 0;
-    text-align: center;
-}
-
 .clients-slider-content .svg {
   border-radius: 12px;
   width: 80px;
@@ -188,6 +158,11 @@ export default {
   margin-bottom: 30px;
   position: relative;
   z-index: 1;
+}
+
+.clients-slider-content {
+    padding: 30px 0px;
+    text-align: center;
 }
 
 .clients-slider-content .svg::after {

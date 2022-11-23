@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <app-testimonials-heading></app-testimonials-heading>
-        <app-testimonials-items></app-testimonials-items>
+        <app-testimonials-items :clients="clients"></app-testimonials-items>
         <app-testimonials-parteners :partners="partners"></app-testimonials-parteners>
         <app-testimonials-team :team="team"></app-testimonials-team>
     </div>
@@ -17,11 +17,14 @@ export default {
     name: 'Testimonials',
     async asyncData({ $axios }) {
 
+      const clients = await $axios.get('/testimonials');
+
       const TEAM = await $axios.get('/teams');
 
       const PARTNERS = await $axios.get('/partners');
 
       return {
+          clients: clients.data.data,
           team: TEAM.data.data,
           partners: PARTNERS.data.data
       }
