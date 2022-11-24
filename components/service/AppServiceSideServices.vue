@@ -3,29 +3,9 @@
         <h3 class="title">Our Services</h3>
         <div class="side-bar-categories">
             <ul>
-                <li>
-                    <div class="line-circle"></div>
-                    <a href="#" target="_blank">IT Services</a>
-                </li>
-                <li>
-                    <div class="line-circle"></div>
-                    <a href="#" target="_blank">Cloud Computing</a>
-                </li>
-                <li>
-                    <div class="line-circle"></div>
-                    <a href="#" target="_blank">Web Development</a>
-                </li>
-                <li>
-                    <div class="line-circle"></div>
-                    <a href="#" target="_blank">Business Reform</a>
-                </li>
-                <li>
-                    <div class="line-circle"></div>
-                    <a href="#" target="_blank">Infrastructure</a>
-                </li>
-                <li>
-                    <div class="line-circle"></div>
-                    <a href="#" target="_blank">Data Analysis</a>
+                <li v-for="feature in serviceDetails.features" :key="feature">
+                  <div class="line-circle"></div>
+                  <a href="#" target="_blank">{{feature}}</a>
                 </li>
             </ul>
         </div>
@@ -34,8 +14,8 @@
 
 <script>
 export default {
-    name: 'AppServiceSideServices'
-
+    name: 'AppServiceSideServices',
+    props: ["serviceDetails"]
 }
 </script>
 

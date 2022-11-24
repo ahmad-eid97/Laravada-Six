@@ -5,13 +5,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
-                        <app-blog-body></app-blog-body>
+                        <app-blog-body :blogDetails="blogDetails"></app-blog-body>
                     </div>
                     <div class="col-lg-4">
-                        <app-blog-side-archive></app-blog-side-archive>
+                        <app-blog-side-archive :blogDetails="blogDetails"></app-blog-side-archive>
                         <app-blog-side-blogs></app-blog-side-blogs>
                         <app-blog-side-tags></app-blog-side-tags>
-                        <app-blog-gallery></app-blog-gallery>
+                        <app-blog-gallery :blogDetails="blogDetails"></app-blog-gallery>
                     </div>
                 </div>
             </div>

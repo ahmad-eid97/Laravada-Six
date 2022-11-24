@@ -25,6 +25,8 @@
 <script>
 export default {
     name: 'AppBlogHeading',
+
+
 }
 </script>
 

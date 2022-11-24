@@ -5,14 +5,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
-                        <app-service-body></app-service-body>
+                        <app-service-body :serviceDetails="serviceDetails"></app-service-body>
                     </div>
                     <div class="col-lg-4">
                         <div class="side-bar-area">
-                            <app-service-side-services></app-service-side-services>
+                            <app-service-side-services :serviceDetails="serviceDetails"></app-service-side-services>
                             <app-service-side-tags></app-service-side-tags>
-                            <app-service-gallery></app-service-gallery>
-                            <app-service-side-archive></app-service-side-archive>
+                            <app-service-gallery :serviceDetails="serviceDetails"></app-service-gallery>
+                            <app-service-side-archive :serviceDetails="serviceDetails"></app-service-side-archive>
                         </div>
                     </div>
                 </div>

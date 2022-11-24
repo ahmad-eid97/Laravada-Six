@@ -37,6 +37,7 @@ export default {
     '~plugins/fortawesome.js',
     '~plugins/vueCountDown.js',
     '~plugins/swiperVue.js',
+    '~plugins/date-fns.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

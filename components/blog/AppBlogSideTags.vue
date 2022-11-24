@@ -14,7 +14,8 @@
 
 <script>
 export default {
-  name: 'AppBlogSideTags'
+    name: 'AppBlogSideTags'
+
 }
 </script>
 
@@ -48,7 +49,7 @@ export default {
   border: 2px solid var(--main-color);
   font-size: 14px;
   font-weight: 400;
-  border-radius: 12px;
+  border-radius: 20px;
   -webkit-transition: .7s;
   transition: .7s;
 }

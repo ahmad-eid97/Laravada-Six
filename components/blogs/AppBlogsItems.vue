@@ -13,8 +13,8 @@
                                 <img :src="blog.category.image" alt="Blog Images">
                             </router-link>
                             <div class="blog-tag">
-                                <h3>11</h3>
-                                <span>Dec</span>
+                                <h3>{{ $date(new Date(blog.publish_date), 'dd') }}</h3>
+                                <span>{{ $date(new Date(blog.publish_date), 'MMM') }}</span>
                             </div>
                         </div>
                         <h3 class="title">
@@ -23,13 +23,13 @@
                         <div class="content">
                             <ul>
                                 <li>
-                                    <a href="#"><font-awesome-icon icon="fa-regular fa-user" />By Admin</a>
+                                    <a href="#"><font-awesome-icon icon="fa-regular fa-user" />By {{blog.username}}</a>
                                 </li>
                                 <li>
                                     <a href="index.html"><font-awesome-icon icon="fa-solid fa-tag" />Business</a>
                                 </li>
                             </ul>
-                            <p>{{blog.description}}</p>
+                            <p>{{blog.short_description}}</p>
                         </div>
                     </div>
                 </div>

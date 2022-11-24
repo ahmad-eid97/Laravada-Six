@@ -30,6 +30,7 @@
     "vue-awesome-swiper": "^4.1.1",
     "vue-cool-lightbox": "^2.7.5",
     "vue-count-to": "^1.0.13",
+    "vue-date-fns": "^2.0.2",
     "vue-it-bigger": "^0.2.2",
     "vue-js-counter": "^1.0.3",
     "vue-owl-carousel": "^2.0.3",
