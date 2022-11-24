@@ -3,8 +3,8 @@
         <div class="blog-article-img">
             <img :src="blogDetails.image" alt="Images">
             <div class="blog-article-tag">
-                <h3>04</h3>
-                <span>Nov</span>
+                <h3>{{ $date(new Date(blogDetails.publish_date), 'dd') }}</h3>
+                <span>{{ $date(new Date(blogDetails.publish_date), 'MMM') }}</span>
             </div>
         </div>
         <div class="blog-article-title">
