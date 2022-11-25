@@ -15,7 +15,7 @@
                 </li>
                 <li>
                     <font-awesome-icon icon="fa-solid fa-eye" />
-                    322 View
+                    {{blogDetails.views}} Views
                 </li>
                 <li>
                     <font-awesome-icon icon="fa-solid fa-comments" />
@@ -68,9 +68,7 @@
                     <div class="blog-tag">
                         <ul>
                             <li><i class="bx bx-purchase-tag-alt"></i> Tags:</li>
-                            <li><a href="#">Android</a></li>
-                            <li><a href="#">Creative</a></li>
-                            <li><a href="#">App</a></li>
+                            <li v-for="tag in blogDetails.tags.slice(0,5)" :key="tag"><a href="#">{{tag}}</a></li>
                         </ul>
                     </div>
                 </div>

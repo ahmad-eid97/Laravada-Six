@@ -10,7 +10,7 @@
                     <div class="blog-card">
                         <div class="blog-img">
                             <router-link to="blog">
-                                <img :src="blog.category.image" alt="Blog Images">
+                                <img :src="blog.image" alt="Blog Images">
                             </router-link>
                             <div class="blog-tag">
                                 <h3>{{ $date(new Date(blog.publish_date), 'dd') }}</h3>

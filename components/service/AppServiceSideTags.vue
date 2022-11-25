@@ -2,20 +2,15 @@
     <div class="side-bar-widget">
         <h3 class="title">Tag Cloud</h3>
         <ul class="side-bar-widget-tag">
-            <li><a href="#" target="_blank">Android</a></li>
-            <li><a href="#" target="_blank">Creative</a></li>
-            <li><a href="#" target="_blank">App</a></li>
-            <li><a href="#" target="_blank">IOS</a></li>
-            <li><a href="#" target="_blank">Business</a></li>
-            <li><a href="#" target="_blank">Consulting</a></li>
+            <li v-for="tag in serviceDetails.tags" :key="tag"><a href="#">{{tag}}</a></li>
         </ul>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'AppServiceSideTags'
-
+    name: 'AppServiceSideTags',
+    props: ["serviceDetails"]
 }
 </script>
 

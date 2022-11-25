@@ -12,12 +12,14 @@ export default {
   name: 'Blogs',
   components: { AppBlogsHeading, AppBlogsItems },
   async asyncData({ $axios }) {
-    return await $axios.get('/blogs').then((res) => {
+    return await $axios.get('/blogs?latest=1').then((res) => {
       return {
         blogs: res.data.data
       }
     });
   },
+  mounted() {
+  }
 }
 </script>
 

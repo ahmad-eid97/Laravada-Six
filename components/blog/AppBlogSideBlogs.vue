@@ -2,56 +2,17 @@
     <div class="side-bar-widget">
         <h3 class="title">Latest Blog</h3>
         <div class="widget-popular-post">
-          <article class="item">
+          <article v-for="blog in latestBlogs.blogs.slice(0, 4)" :key="blog.id" class="item">
             <a href="#" target="_blank" class="thumb">
-              <img class="full-image cover bg1" role="img" src="/assets/images/blog-details.jpg">
+              <img class="full-image cover bg1" role="img" :src="blog.image">
             </a>
             <div class="info">
               <h4 class="title-text">
                 <a href="#" target="_blank">
-                10 Ways to Get Efficient Result &amp; Benefits
+                  {{blog.title}}
                 </a>
               </h4>
-              <p>Nov 05, 2020</p>
-            </div>
-          </article>
-          <article class="item">
-            <a href="#" target="_blank" class="thumb">
-              <img class="full-image cover bg1" role="img" src="/assets/images/blog-img2.jpg">
-            </a>
-            <div class="info">
-              <h4 class="title-text">
-                <a href="#" target="_blank">
-                  New Device Invention for Digital Platform
-                </a>
-              </h4>
-              <p>13 October, 2020</p>
-            </div>
-          </article>
-          <article class="item">
-            <a href="#" target="_blank" class="thumb">
-              <img class="full-image cover bg1" role="img" src="/assets/images/blog-img3.jpg">
-            </a>
-            <div class="info">
-              <h4 class="title-text">
-                <a href="#" target="_blank">
-                  Idea For New 5 App Design
-                </a>
-              </h4>
-              <p>17 October, 2020</p>
-            </div>
-          </article>
-          <article class="item">
-            <a href="#" target="_blank" class="thumb">
-              <img class="full-image cover bg1" role="img" src="/assets/images/blog-img1.jpg">
-            </a>
-            <div class="info">
-              <h4 class="title-text">
-                <a href="#" target="_blank">
-                  Product Idea Solution For New Generation
-                </a>
-              </h4>
-              <p>17 October, 2020</p>
+              <p>{{blog.publish_date}}</p>
             </div>
           </article>
         </div>
@@ -60,8 +21,8 @@
 
 <script>
 export default {
-    name: 'AppBlogSideBlogs'
-
+    name: 'AppBlogSideBlogs',
+    props: ["latestBlogs"]
 }
 </script>
 

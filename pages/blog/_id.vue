@@ -9,8 +9,8 @@
                     </div>
                     <div class="col-lg-4">
                         <app-blog-side-archive :blogDetails="blogDetails"></app-blog-side-archive>
-                        <app-blog-side-blogs></app-blog-side-blogs>
-                        <app-blog-side-tags></app-blog-side-tags>
+                        <app-blog-side-blogs :latestBlogs="latestBlogs"></app-blog-side-blogs>
+                        <app-blog-side-tags :blogDetails="blogDetails"></app-blog-side-tags>
                         <app-blog-gallery :blogDetails="blogDetails"></app-blog-gallery>
                     </div>
                 </div>
@@ -29,11 +29,14 @@ import AppBlogSideArchive from '../../components/blog/AppBlogSideArchive.vue'
 export default {
   components: { AppBlogHeading, AppBlogBody, AppBlogSideBlogs, AppBlogSideTags, AppBlogGallery, AppBlogSideArchive },
   async asyncData({ $axios, params }) {
-    return await $axios.get(`/blogs/${params.id}`).then((res) => {
-      return {
-        blogDetails: res.data.data
-      }
-    });
+    const blogDetails = await $axios.get(`/blogs/${params.id}`);
+
+    const latestBlogs = await $axios.get(`/blogs/?latest=1`);
+
+    return {
+      blogDetails: blogDetails.data.data,
+      latestBlogs: latestBlogs.data.data
+    }
   },
 }
 </script>
