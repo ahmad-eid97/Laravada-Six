@@ -2,7 +2,7 @@
     <section class="blogs">
         <div class="row m-0 align-items-center justify-content-between">
             <div class="col-md-12 col-lg-6">
-                <div class="heading">
+                <div class="page-heading">
                     <h2>Marketing Resources: Insider Advice on How to Increase Online Sales</h2>
                 </div>
             </div>

@@ -2,7 +2,7 @@
     <section class="brands">
         <div class="row m-0 align-items-center justify-content-center">
             <div class="col-12">
-                <div class="heading">
+                <div class="page-heading">
                     <h2>Some Brands We Work With</h2>
                     <p>Quisque aliquet, libero consequat elementum convallis.</p>
                 </div>
