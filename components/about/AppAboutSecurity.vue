@@ -7,72 +7,20 @@
                 
             </div>
             <div class="row pt-45">
-                <div class="col-lg-4 col-sm-6">
+                <div v-for="service in servicesSection.slice(0, 6)" :key="service.id" class="col-lg-4 col-sm-6" @click="$router.push(`/service/${service.id}`)">
                 <div class="security-card">
                     <div class="icon">
-                        <font-awesome-icon icon="fa-solid fa-building-lock" />
+                        <font-awesome-icon :icon="service.icon" />
                     </div>
                     <h3>
-                        <a href="#">Business Security</a>
+                        <a href="#">{{service.title}}</a>
                     </h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit scelerisque ullamcorper proin scelerisque tortor odio.</p>
+                    <p>{{service.short_description}}</p>
                 </div>
                 </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="security-card">
-                        <div class="icon">
-                            <font-awesome-icon icon="fa-solid fa-computer" />
-                        </div>
-                        <h3>
-                            <a href="#">Manage IT Service</a>
-                        </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit scelerisque ullamcorper proin scelerisque tortor odio.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="security-card">
-                        <div class="icon">
-                            <font-awesome-icon icon="fa-solid fa-magnifying-glass-chart" />
-                        </div>
-                        <h3>
-                            <a href="#">Product Analysis</a>
-                        </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit scelerisque ullamcorper proin scelerisque tortor odio.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="security-card">
-                        <div class="icon">
-                            <font-awesome-icon icon="fa-solid fa-file-circle-check" />
-                        </div>
-                        <h3>
-                            <a href="case-details.html">Analytic Solution</a>
-                        </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit scelerisque ullamcorper proin scelerisque tortor odio.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="security-card">
-                        <div class="icon">
-                            <font-awesome-icon icon="fa-solid fa-award" />
-                        </div>
-                        <h3>
-                            <a href="case-details.html">Finest Quality</a>
-                        </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit scelerisque ullamcorper proin scelerisque tortor odio.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="security-card">
-                        <div class="icon">
-                            <font-awesome-icon icon="fa-solid fa-cubes" />
-                        </div>
-                        <h3>
-                            <a href="case-details.html">Risk Management</a>
-                        </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit scelerisque ullamcorper proin scelerisque tortor odio.</p>
-                    </div>
-                </div>
+            </div>
+            <div class="customBtn">
+                <button class="customBtn" @click="$router.push('/services')">See More</button>
             </div>
         </div>
     </div>
@@ -80,11 +28,14 @@
 
 <script>
 export default {
-
+    props: ["servicesSection"],
+    mounted() {
+        console.log(this.servicesSection)
+    }
 }
 </script>
 
-<style>
+<style lang="scss">
 .section-title {
     margin: 0 auto;
     padding: 0;
@@ -192,5 +143,30 @@ export default {
     margin-bottom: 12px;
     -webkit-transition: .5s;
     transition: .5s;
+}
+div.customBtn {
+    display: flex;
+    justify-content: center;
+}
+button.customBtn {
+    border-radius: 25px 25px 25px 25px;
+    padding-bottom: 17px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 17px;
+    font-weight: 500;
+    justify-content: center;
+    letter-spacing: 2px;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    background-color: #000;
+    line-height: 17px;
+    min-width: 200px;
+    text-transform: uppercase;
+    font-family: "Roboto";
+    border: none;
+    &:hover {
+        background-color: var(--main-color);
+    }
 }
 </style>

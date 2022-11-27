@@ -2,17 +2,17 @@
   <div class="home">
         <app-about-heading></app-about-heading>
         
-        <app-about-intro></app-about-intro>
+        <app-about-intro :aboutSection="aboutSection"></app-about-intro>
 
-        <app-about-experiance></app-about-experiance>
+        <app-about-experiance :experienceSection="experienceSection"></app-about-experiance>
 
-        <app-about-choose></app-about-choose>
+        <app-about-choose :whySection="whySection"></app-about-choose>
 
-        <app-about-security></app-about-security>
+        <app-about-security :servicesSection="servicesSection"></app-about-security>
 
         <app-about-parteners :partners="partners"></app-about-parteners>
 
-        <app-about-countdown></app-about-countdown>
+        <app-about-countdown :counterSection="counterSection"></app-about-countdown>
   </div>
 </template>
 
@@ -38,13 +38,41 @@ export default {
     AppAboutParteners,
     AppAboutCountdown
   },
-  async asyncData({ $axios }) {
-    const ABOUT_DETAILS = await $axios.get('/pages/1');
+  async asyncData({ $axios, app }) {
+    const ABOUT_SECTION = await $axios.get('/sections/about', {
+      headers: {
+        "Accept-Language": app.i18n.locale
+      }
+    });
+    
+    const EXPERIENCE_SECTION = await $axios.get('/sections/experience', {
+      headers: {
+        "Accept-Language": app.i18n.locale
+      }
+    });
+    
+    const WHY_SECTION = await $axios.get('/sections/why_choose_us', {
+      headers: {
+        "Accept-Language": app.i18n.locale
+      }
+    });
+    
+    const COUNTER_SECTION = await $axios.get('/sections/counter_success', {
+      headers: {
+        "Accept-Language": app.i18n.locale
+      }
+    });
+    
+    const SERVICES_SECTION = await $axios.get('/services');
 
     const PARTNERS = await $axios.get('/partners');
 
     return {
-      aboutDetails: ABOUT_DETAILS.data.data,
+      aboutSection: ABOUT_SECTION.data.data,
+      experienceSection: EXPERIENCE_SECTION.data.data,
+      whySection: WHY_SECTION.data.data,
+      counterSection: COUNTER_SECTION.data.data,
+      servicesSection: SERVICES_SECTION.data.data.services,
       partners: PARTNERS.data.data
     }
   },

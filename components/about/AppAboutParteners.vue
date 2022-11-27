@@ -1,6 +1,5 @@
 <template>
-    <section class="about-partners">
-                
+    <section class="about-partners">     
         <swiper :options="swiperOption" class="owl-carousel">
         <swiper-slide v-for="partner in partners.partners" :key="partner.id">
             <div class="item">
@@ -13,12 +12,10 @@
             </div>
         </swiper-slide>
         </swiper>
-
     </section>
 </template>
 
 <script>
-
 export default {
     name: 'AppAboutPartners',
     data() {
@@ -83,11 +80,11 @@ export default {
         text-align: center;
     }
     .about-partners .owl-carousel .item img {
-        max-height: 115px;
+        height: 80px !important;
         width: auto;
         display: inline;
         max-width: 100%;
-        height: auto;
+        width: auto !important;
     }
     .about-partners .owl-carousel .owl-nav.disabled {
         display: none !important;

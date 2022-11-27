@@ -14,24 +14,24 @@
                         Grow Your Online Business Strategically, and Improve Customer Retention.
                     </p>
                     <div class="col-auto socials">
-                    <a href="#" >
+                    <a :href="`https://${$store.state.footerData.facebook}`" target="_blank" >
                         <font-awesome-icon icon="fa-brands fa-facebook-f" />
                     </a>
-                    <a href="#" >
+                    <!-- <a :href="`https://${$store.state.footerData.twitter}`" target="_blank" >
                         <font-awesome-icon icon="fa-brands fa-twitter" />
-                    </a>
-                    <a href="#" >
+                    </a> -->
+                    <a :href="`https://${$store.state.footerData.youtube}`" target="_blank" >
                         <font-awesome-icon icon="fa-brands fa-youtube" />           
                     </a>
-                    <a href="#" >
+                    <a :href="`https://${$store.state.footerData.instagram}`" target="_blank" >
                         <font-awesome-icon icon="fa-brands fa-instagram" />          
                     </a>
-                    <a href="#" >
+                    <a :href="`https://${$store.state.footerData.linkedin}`" target="_blank" >
                         <font-awesome-icon icon="fa-brands fa-linkedin-in" />          
                     </a>
-                    <a href="#" >
+                    <!-- <a :href="`https://${$store.state.footerData.tiktok}`" target="_blank" >
                         <font-awesome-icon icon="fa-brands fa-tiktok" />          
-                    </a>
+                    </a> -->
                 </div>
                 </div>
                 <div class="col-sm-6 col-md-3  text-start">
@@ -102,7 +102,7 @@
                     Call Us +111111111111
                 </div>
                 <div class="col-auto">
-                    info@railcoder.com
+                    {{$store.state.websiteSettings.find(one => one.key === 'email').plain_value}}
                 </div>
             </div>
         </div>
@@ -124,7 +124,6 @@ export default {
         
     },
     mounted() {
-        console.log(this.$store.state.footerLinks)
     }
 }
 </script>

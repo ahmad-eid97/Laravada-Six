@@ -5,29 +5,20 @@
                 <div class="col-lg-6">
                     <div class="choose-content mr-20">
                         <div class="section-title">
-                            <span class="sp-color1">Why Choose Us</span>
-                            <h2>We Provide Truly Prominent It Solutions.</h2>
+                            <span class="sp-color1">{{whySection.find(one => one.key === 'why_choose_us_title').value}}</span>
+                            <h2>{{whySection.find(one => one.key === 'why_choose_us_sub_title').value}}</h2>
                             <p>
-                            Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum auctor a ornare odio.
+                                {{whySection.find(one => one.key === 'why_choose_us_description').value}}
                             </p>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6 col-6">
+                            <div v-for="item in whySection.find(one => one.key === 'why_choose_us_list').value" :key="item" class="col-lg-6 col-6">
                                 <div class="choose-content-card">
                                     <div class="content">
-                                        <font-awesome-icon icon="fa-solid fa-hand-holding-hand" />
-                                        <h3>Experience</h3>
+                                        <font-awesome-icon :icon="item.icon" />
+                                        <h3>{{item.title}}</h3>
                                     </div>
-                                    <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-6">
-                                <div class="choose-content-card">
-                                    <div class="content">
-                                        <font-awesome-icon icon="fa-solid fa-circle-question" />
-                                        <h3>Quick Support</h3>
-                                    </div>
-                                    <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet</p>
+                                    <p>{{item.description}}</p>
                                 </div>
                             </div>
                         </div>
@@ -35,7 +26,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="choose-img">
-                        <img src="/assets/images/choose-img.jpg" alt="Images">
+                        <img :src="whySection.find(one => one.key === 'why_choose_us_image').value" alt="Images">
                     </div>
                 </div>
             </div>
@@ -45,7 +36,8 @@
 
 <script>
 export default {
-    name: 'AppAboutChoose'
+    name: 'AppAboutChoose',
+    props: ["whySection"]
 }
 </script>
 
@@ -67,7 +59,7 @@ export default {
     margin-bottom: 8px;
     font-weight: 600;
     display: block;
-    color:#ffefe6;
+    color:#fff;
 }
 .choose-content .section-title h2 {
     color: #fff;
@@ -100,7 +92,7 @@ export default {
     top: 10px;
     left: 0;
     font-size: 60px;
-    color:#ffefe6;
+    color:#fff;
     line-height: 1;
 }
 .choose-area .choose-content .choose-content-card .content h3 {
