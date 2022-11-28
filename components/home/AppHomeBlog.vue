@@ -2,7 +2,7 @@
     <section class="blogs">
         <div class="row m-0 align-items-center justify-content-between">
             <div class="col-md-12 col-lg-6">
-                <div class="page-heading">
+                <div class="heading">
                     <h2>Marketing Resources: Insider Advice on How to Increase Online Sales</h2>
                 </div>
             </div>
@@ -11,9 +11,9 @@
             </div>
         </div>
         <div class="row m-0 justify-content-center blog">
-            <div class="col-sm-6 col-lg-4">
+            <div v-for="blog in blogs.slice(0, 3)" :key="blog.id" class="col-sm-6 col-lg-4">
                 <div class="image">
-                    <img class="img-fluid" src="https://avada.theme-fusion.com/marketing-consultant/wp-content/uploads/sites/142/2020/06/blog-posts-6.jpg" alt="">
+                    <img class="img-fluid" :src="blog.image" :alt="blog.title">
                     <div class="rollover">
                         <div class="rollover-content">
                             <a class="" href="#"></a>
@@ -21,37 +21,11 @@
                     </div>
                 </div>
                 <div class="content">
-                    <h2>Marketing Tips And Tricks For Your Website</h2>
+                    <h2>{{blog.short_description}}</h2>
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-4">
-                <div class="image">
-                    <img class="img-fluid" src="https://avada.theme-fusion.com/marketing-consultant/wp-content/uploads/sites/142/2020/06/blog-posts-5.jpg" alt="">
-                    <div class="rollover">
-                        <div class="rollover-content">
-                            <a class="" href="#"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="content">
-                    <h2>How to Write Stunning Blog Post Titles</h2>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4">
-                <div class="image">
-                    <img class="img-fluid" src="https://avada.theme-fusion.com/marketing-consultant/wp-content/uploads/sites/142/2020/06/blog-posts-4.jpg" alt="">
-                    <div class="rollover">
-                        <div class="rollover-content">
-                            <a class="" href="#"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="content">
-                    <h2>Techniques to Reduce Facebook Ads Spend</h2>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4" data-aos="zoom-in-up" data-aos-easing="ease-in-out-quart" data-aos-duration="1000">
-                <a href="#" class="btn">Read More Case Studies</a>
+            <div class="col-sm-12 col-lg-12 buttonContainer" data-aos="zoom-in-up" data-aos-easing="ease-in-out-quart" data-aos-duration="1000">
+                <nuxt-link to="/blogs" class="btn">Read More Case Studies</nuxt-link>
             </div>
         </div>
     </section>
@@ -61,6 +35,7 @@
 
 export default {
     name: 'AppHomeBlog',
+    props: ["blogs"],
     data() {
         return {
 
@@ -100,6 +75,10 @@ export default {
     .blogs .image {
         position: relative;
     }
+    .blogs .image img {
+        height: 300px;
+        width: 100%;
+    }
     .blogs .image .rollover {
         background-image: linear-gradient(to top, rgba(248, 98, 18, 0.6) 0px, rgba(248, 96, 17, 0) 100%);
         transform: translateY(0);
@@ -117,6 +96,11 @@ export default {
     }
     .blogs .content {
         padding: 26px 0;
+    }
+
+    .buttonContainer {
+        display: flex;
+        justify-content: center;
     }
 
     @include xs {

@@ -29,9 +29,6 @@
 <script>
 export default {
     props: ["servicesSection"],
-    mounted() {
-        console.log(this.servicesSection)
-    }
 }
 </script>
 

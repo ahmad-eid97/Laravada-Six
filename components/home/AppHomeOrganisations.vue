@@ -2,7 +2,7 @@
     <section class="Organisations">
         <div class="row m-0 align-items-center">
             <div class="col-12">
-                <div class="page-heading">
+                <div class="heading">
                     <h2>Trusted by Leading Organisations</h2>
                 </div>
             </div>

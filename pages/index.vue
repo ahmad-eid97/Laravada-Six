@@ -4,12 +4,12 @@
     <app-home-growth></app-home-growth>
     <app-home-investors></app-home-investors>
     <app-home-social></app-home-social>
-    <app-home-brands></app-home-brands>
+    <app-home-brands :partners="partners"></app-home-brands>
     <app-home-bars></app-home-bars>
     <app-home-organisations></app-home-organisations>
     <app-home-bost></app-home-bost>
     <app-home-team></app-home-team>
-    <app-home-blog></app-home-blog>
+    <app-home-blog :blogs="blogs"></app-home-blog>
     <app-home-bottom></app-home-bottom>
     <!-- <app-home-banner></app-home-banner>
     <app-home-features></app-home-features>
@@ -47,6 +47,16 @@ import AppHomeTeam from '../components/home/AppHomeTeam.vue'
 
 export default {
   name: 'Home',
+  async asyncData({ $axios }) {
+    const partners = await $axios.get('/partners');
+
+    const blogs = await $axios.get('/blogs?latest=1');
+
+    return {
+      partners: partners.data.data.partners,
+      blogs: blogs.data.data.blogs
+    }
+  },
   components: {
     AppHomeIntro,
     AppHomeGrowth,
