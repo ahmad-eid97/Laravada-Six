@@ -28,7 +28,7 @@
                     <h3>Marketing Consultant Expert</h3>
                     <a href="#" class="phone">
                         <font-awesome-icon icon="fa-solid fa-phone" />
-                        (555) 802-1234
+                        {{$store.state.websiteSettings.find(one => one.key === 'contact_phone').plain_value}}
                     </a>
                     <b-form-input placeholder="Your Name*"></b-form-input>
                     <b-form-input placeholder="Your Email*"></b-form-input>
