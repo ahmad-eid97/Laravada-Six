@@ -20,19 +20,14 @@
                         </p>
                         <h3>{{aboutSection.find(one => one.key === 'about_title_experience').value}}</h3>
                         <div class="skill-bar" data-percentage="90%">
-                            <h4 class="progress-title-holder clearfix">
-                                <span class="progress-title">{{aboutSection.find(one => one.key === 'about_skill_1_title').value}}</span>
-                            </h4>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" :style="{width: aboutSection.find(one => one.key === 'about_skill_1_percentage').value+'%'}" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div v-for="item in aboutSection.find(one => one.key === 'about_list').value" :key="item">
+                                <h4 class="progress-title-holder clearfix">
+                                    <span class="progress-title">{{item.title}}</span>
+                                </h4>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" :style="{width: item.percentage+'%'}" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                             </div>
-                            <h4 class="progress-title-holder clearfix">
-                                <span class="progress-title">{{aboutSection.find(one => one.key === 'about_skill_2_title').value}}</span>
-                            </h4>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" :style="{width: aboutSection.find(one => one.key === 'about_skill_2_percentage').value+'%'}" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                                
                         </div>
                     </div>
                 </div>
