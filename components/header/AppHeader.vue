@@ -2,10 +2,7 @@
   <header>
     <b-navbar :class="!topOfPage ? 'onScroll' : ''" toggleable="lg">
       <b-navbar-brand href="/">
-        <img
-          src="/assets/images/logo.png"
-          alt="logoImage"
-        />
+        <img src="/assets/images/logo.png" alt="logoImage" />
       </b-navbar-brand>
 
       <b-collapse
@@ -17,13 +14,15 @@
           <b-nav-item :to="localePath('/')">Home</b-nav-item>
           <b-nav-item :to="localePath('/services')">Services</b-nav-item>
           <b-nav-item :to="localePath('/team')">Why Us</b-nav-item>
-          <b-nav-item :to="localePath('/testimonials')">Case Studies</b-nav-item>
+          <b-nav-item :to="localePath('/testimonials')"
+            >Case Studies</b-nav-item
+          >
           <b-nav-item :to="localePath('/about')">About</b-nav-item>
           <b-nav-item :to="localePath('/blogs')">Blog</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
       <a href="#" class="phone">
-        <font-awesome-icon icon="fa-solid fa-phone" />
+        <i class="fa-solid fa-phone"></i>
         +11111111111
       </a>
       <a to="contact" class="btn"> Free Qoute </a>
@@ -46,12 +45,12 @@
 </template>
 
 <script>
-import langSwitch from '../langSwitch/langSwitch.vue'
+import langSwitch from "../langSwitch/langSwitch.vue";
 // import DropdownMenu from '@innologica/vue-dropdown-menu'
 export default {
   name: "AppHeader",
   components: {
-    langSwitch
+    langSwitch,
     // DropdownMenu
   },
   data() {
@@ -128,7 +127,7 @@ header .phone {
   text-decoration: none;
   color: #000;
 }
-header .phone svg {
+header .phone i {
   color: rgb(248, 96, 17);
   font-size: 16px;
   margin-right: 11px;

@@ -1,11 +1,11 @@
 <template>
-    <div class="service-article">
-        <div class="service-article-img">
-            <img :src="serviceDetails.image" alt="Images">
-        </div>
-        <div class="service-article-content">
-            <p>{{serviceDetails.description}}</p>
-            <!-- <h2>Cloud Computing</h2>
+  <div class="service-article">
+    <div class="service-article-img">
+      <img :src="serviceDetails.image" alt="Images" />
+    </div>
+    <div class="service-article-content">
+      <p>{{ serviceDetails.description }}</p>
+      <!-- <h2>Cloud Computing</h2>
             <p>
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. cu
             sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies ne,
@@ -97,15 +97,15 @@
             li, porttitor eu, consequat vitae, eleifend ac, enim.
             </p>
         </div> -->
-        </div>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'AppServiceBody',
-    props: ["serviceDetails"]
-}
+  name: "AppServiceBody",
+  props: ["serviceDetails"],
+};
 </script>
 
 <style>
@@ -133,22 +133,22 @@ export default {
   color: #252525;
   margin-bottom: 10px;
   font-weight: 600;
-  -webkit-transition: .7s;
-  transition: .7s;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
   padding-left: 35px;
   position: relative;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
-.service-article .service-article-content .service-article-list li svg {
+.service-article .service-article-content .service-article-list li i {
   font-size: 26px;
   color: var(--main-color);
   position: absolute;
   left: 0;
   top: -2px;
   margin-right: 5px;
-  -webkit-transition: .5s;
-  transition: .5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 .service-article .service-article-another .service-article-another-img {
   margin-bottom: 25px;

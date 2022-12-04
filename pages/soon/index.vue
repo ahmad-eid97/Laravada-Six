@@ -11,11 +11,20 @@
               ipsum suspendisse ultrices.
             </p>
 
-            <div id="timer" :data-date="new Date(new Date().getTime() + 2 * 24 * 60 * 60 * 1000)">
+            <div
+              id="timer"
+              :data-date="
+                new Date(new Date().getTime() + 2 * 24 * 60 * 60 * 1000)
+              "
+            >
               <div id="days">{{ countDownDate.days }} <span>Days</span></div>
               <div id="hours">{{ countDownDate.hours }} <span>Hours</span></div>
-              <div id="minutes">{{ countDownDate.minutes }} <span>Minutes</span></div>
-              <div id="seconds">{{ countDownDate.seconds }} <span>Seconds</span></div>
+              <div id="minutes">
+                {{ countDownDate.minutes }} <span>Minutes</span>
+              </div>
+              <div id="seconds">
+                {{ countDownDate.seconds }} <span>Seconds</span>
+              </div>
             </div>
 
             <form
@@ -43,22 +52,22 @@
             <ul class="header-content-right">
               <li>
                 <a href="https://www.facebook.com/" target="_blank">
-                  <font-awesome-icon icon="fa-brands fa-facebook-f" />
+                  <i class="fa-brands fa-facebook-f"></i>
                 </a>
               </li>
               <li>
                 <a href="https://twitter.com/?lang=en" target="_blank">
-                  <font-awesome-icon icon="fa-brands fa-twitter" />
+                  <i class="fa-brands fa-twitter"></i>
                 </a>
               </li>
               <li>
                 <a href="https://www.linkedin.com/" target="_blank">
-                  <font-awesome-icon icon="fa-brands fa-linkedin-in" />
+                  <i class="fa-brands fa-linkedin-in"></i>
                 </a>
               </li>
               <li>
                 <a href="https://www.instagram.com/" target="_blank">
-                  <font-awesome-icon icon="fa-brands fa-instagram" />
+                  <i class="fa-brands fa-instagram"></i>
                 </a>
               </li>
             </ul>
@@ -79,31 +88,39 @@ export default {
         days: 0,
         hours: 0,
         seconds: 0,
-        minutes: 0
-      }
-    }
+        minutes: 0,
+      },
+    };
   },
   mounted() {
     var timer = document.getElementById("timer");
 
     setInterval(() => {
-      this.countDownDate.time = new Date(timer.getAttribute('data-date')).getTime();
+      this.countDownDate.time = new Date(
+        timer.getAttribute("data-date")
+      ).getTime();
 
       var now = new Date().getTime();
       var distance = this.countDownDate.time - now;
-      this.countDownDate['days'] = Math.floor(distance / (1000 * 60 * 60 * 24));
-      this.countDownDate['hours'] = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      this.countDownDate['minutes'] = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      this.countDownDate['seconds'] = Math.floor((distance % (1000 * 60)) / 1000);
+      this.countDownDate["days"] = Math.floor(distance / (1000 * 60 * 60 * 24));
+      this.countDownDate["hours"] = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      this.countDownDate["minutes"] = Math.floor(
+        (distance % (1000 * 60 * 60)) / (1000 * 60)
+      );
+      this.countDownDate["seconds"] = Math.floor(
+        (distance % (1000 * 60)) / 1000
+      );
 
       if (distance < 0) {
-        this.countDownDate['days'] = 0;
-        this.countDownDate['hours'] = 0;
-        this.countDownDate['minutes'] = 0;
-        this.countDownDate['seconds'] = 0;
+        this.countDownDate["days"] = 0;
+        this.countDownDate["hours"] = 0;
+        this.countDownDate["minutes"] = 0;
+        this.countDownDate["seconds"] = 0;
       }
     }, 1000);
-  }
+  },
 };
 </script>
 
