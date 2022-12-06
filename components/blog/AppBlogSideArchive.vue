@@ -1,22 +1,22 @@
 <template>
-    <div class="side-bar-widget">
-        <h3 class="title">Blog Categories</h3>
-        <div class="side-bar-categories">
-            <ul>
-            <li v-for="feature in blogDetails.features" :key="feature">
-              <div class="line-circle"></div>
-              <a href="#" target="_blank">{{feature}}</a>
-            </li>
-          </ul>
-        </div>
+  <div class="side-bar-widget">
+    <h3 class="title">Blog Categories</h3>
+    <div class="side-bar-categories">
+      <ul v-if="blogDetails.features.length >= 1">
+        <li v-for="feature in blogDetails.features" :key="feature">
+          <div class="line-circle"></div>
+          <a href="#" target="_blank">{{ feature }}</a>
+        </li>
+      </ul>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'AppBlogSideArchive',
-    props: ["blogDetails"]
-}
+  name: "AppBlogSideArchive",
+  props: ["blogDetails"],
+};
 </script>
 
 <style>
@@ -55,7 +55,7 @@ export default {
   border-radius: 50px;
 }
 .side-bar-widget .side-bar-categories ul li .line-circle::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 1px;
   left: 1px;
@@ -76,7 +76,7 @@ export default {
   width: 100%;
 }
 .side-bar-widget .side-bar-categories ul li a:hover {
-  color:  var(--main-color);
+  color: var(--main-color);
 }
 .side-bar-widget .side-bar-categories ul li a span {
   right: 30px;

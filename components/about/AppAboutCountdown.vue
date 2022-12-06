@@ -22,7 +22,12 @@
           }}
         </p>
       </div>
-      <div class="row pt-45 justify-content-center">
+      <div
+        class="row pt-45 justify-content-center"
+        v-if="
+          counterSection.find((one) => one.key === 'counter_success_list').value
+        "
+      >
         <div
           v-for="item in counterSection.find(
             (one) => one.key === 'counter_success_list'

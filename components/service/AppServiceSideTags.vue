@@ -1,17 +1,19 @@
 <template>
-    <div class="side-bar-widget">
-        <h3 class="title">Tag Cloud</h3>
-        <ul class="side-bar-widget-tag">
-            <li v-for="tag in serviceDetails.tags" :key="tag"><a href="#">{{tag}}</a></li>
-        </ul>
-    </div>
+  <div class="side-bar-widget">
+    <h3 class="title">Tag Cloud</h3>
+    <ul class="side-bar-widget-tag" v-if="serviceDetails.tags.length >= 1">
+      <li v-for="tag in serviceDetails.tags" :key="tag">
+        <a href="#">{{ tag }}</a>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'AppServiceSideTags',
-    props: ["serviceDetails"]
-}
+  name: "AppServiceSideTags",
+  props: ["serviceDetails"],
+};
 </script>
 
 <style>
@@ -45,8 +47,8 @@ export default {
   font-size: 14px;
   font-weight: 400;
   border-radius: 0;
-  -webkit-transition: .7s;
-  transition: .7s;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
 }
 .side-bar-widget .side-bar-widget-tag li:hover a {
   color: #fff;

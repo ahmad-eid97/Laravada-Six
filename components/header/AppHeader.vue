@@ -18,7 +18,7 @@
             >Case Studies</b-nav-item
           >
           <b-nav-item :to="localePath('/about')">About</b-nav-item>
-          <b-nav-item :to="localePath('/blogs')">Blog</b-nav-item>
+          <b-nav-item :to="localePath('/blogs')">Blogs</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
       <a href="#" class="phone">

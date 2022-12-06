@@ -1,9 +1,9 @@
 <template>
   <div class="side-bar-widget">
     <h3 class="title">Gallery</h3>
-    <ul class="blog-gallery">
+    <ul class="blog-gallery" v-if="serviceDetails.gallery.length >= 1">
       <li
-        v-for="(image, index) in serviceDetails.gallery"
+        v-for="(image, index) in serviceDetails.gallery.slice(0, 6)"
         :key="index"
         style="display: inline-block; margin: 0 5px 5px 0"
       >
@@ -89,9 +89,10 @@ export default {
   border-radius: 30px 8px;
 }
 .side-bar-widget .blog-gallery li a img {
-  width: 100%;
-  height: 100%;
+  width: 100px;
+  height: 100px;
   border-radius: 30px 8px;
+  object-fit: contain;
 }
 .side-bar-widget .blog-gallery li a i {
   position: absolute;

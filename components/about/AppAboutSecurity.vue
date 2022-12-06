@@ -7,7 +7,7 @@
           Searching for a Solution! We Provide Truly Prominent IT Solutions
         </h2>
       </div>
-      <div class="row pt-45">
+      <div class="row pt-45" v-if="servicesSection.length >= 1">
         <div
           v-for="service in servicesSection.slice(0, 6)"
           :key="service.id"

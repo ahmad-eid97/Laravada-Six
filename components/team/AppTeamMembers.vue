@@ -1,67 +1,70 @@
 <template>
-    <div class="team-area pt-100 pb-70">
-        <div class="container">
-            <div class="section-title text-center">
-                <span class="sp-color2">Our Team</span>
-                <h2>Our Team Members</h2>
+  <div class="team-area pt-100 pb-70">
+    <div class="container">
+      <div class="section-title text-center">
+        <span class="sp-color2">Our Team</span>
+        <h2>Our Team Members</h2>
+      </div>
+      <div class="row pt-45" v-if="team.teams.length >= 1">
+        <div
+          v-for="member in team.teams"
+          :key="member.id"
+          class="col-sm-6 col-md-4 projects-col"
+        >
+          <div class="card">
+            <div class="thumb">
+              <img :src="member.image" alt="" />
+              <div class="rollover"></div>
             </div>
-            <div class="row pt-45">
-                <div v-for="member in team.teams" :key="member.id" class="col-sm-6 col-md-4 projects-col">
-                    <div class="card">
-                        <div class="thumb">
-                            <img :src="member.image" alt="">
-                            <div class="rollover"></div>
-                        </div>
-                        <div class="content">
-                            <h4>{{member.name}}</h4>
-                            <h5>{{member.job}}</h5>
-                            <h6>{{member.description}}</h6>
-                            <h5>{{member.phone}}</h5>
-                            <h5>{{member.email}}</h5>
-
-                        </div>
-                    </div>
-                </div>
+            <div class="content">
+              <h4>{{ member.name }}</h4>
+              <h5>{{ member.job }}</h5>
+              <h6>{{ member.description }}</h6>
+              <h5>{{ member.phone }}</h5>
+              <h5>{{ member.email }}</h5>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'AppTeamMembers',
-    props: ["team"]
-}
+  name: "AppTeamMembers",
+  props: ["team"],
+};
 </script>
 
 <style>
 .team-area .section-title {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
-.team-area  .section-title span {
+.team-area .section-title span {
   margin-bottom: 8px;
   font-weight: 600;
   display: block;
   color: var(--main-color);
 }
 .team-area .section-title h2 {
-    max-width: 600px;
-    color: #252525;
-    font-size: 35px;
-    font-weight: 800;
-    letter-spacing: -1px;
-    line-height: 42px;
-    text-align: left;
-    margin-top: 10px;
-    margin-right: auto;
-    margin-bottom: 15px;
-    margin-left: auto;
-    text-align: center;
+  max-width: 600px;
+  color: #252525;
+  font-size: 35px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 42px;
+  text-align: left;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-bottom: 15px;
+  margin-left: auto;
+  text-align: center;
 }
 .team-area .section-title .seprator img {
-    width: 70px;
-    margin-top: 5px;
-    margin-bottom: 20px;
+  width: 70px;
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
 .projects-col {
   text-align: center;
@@ -70,19 +73,18 @@ export default {
 .projects-col .card {
   text-align: center;
   margin-bottom: 40px;
-    -webkit-box-shadow: 0 0 15px rgba(0,0,0,.05);
-    box-shadow: 0 0 15px rgba(0,0,0,.05);
-    border-radius: 12px;
-    cursor: pointer;
-        transform: translateY(0px);
-
+  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  cursor: pointer;
+  transform: translateY(0px);
 }
 
 .projects-col .card:hover {
-    transform: translateY(-15px);
-    box-shadow: 1px 19px 28px -10px rgba(13,13,13,0.51);
-    -webkit-box-shadow: 1px 19px 28px -10px rgba(13,13,13,0.51);
-    -moz-box-shadow: 1px 19px 28px -10px rgba(13,13,13,0.51);
+  transform: translateY(-15px);
+  box-shadow: 1px 19px 28px -10px rgba(13, 13, 13, 0.51);
+  -webkit-box-shadow: 1px 19px 28px -10px rgba(13, 13, 13, 0.51);
+  -moz-box-shadow: 1px 19px 28px -10px rgba(13, 13, 13, 0.51);
 }
 .projects-col .thumb {
   margin-bottom: 18px;
@@ -90,11 +92,11 @@ export default {
   display: inline-block;
 }
 .projects-col .thumb img {
-  border-radius: 12px 12px  0 0;
+  border-radius: 12px 12px 0 0;
   width: 100%;
 }
 .projects-col .content {
-    padding: 0 30px 30px;
+  padding: 0 30px 30px;
 }
 .projects-col .content h4 {
   color: #252525;
@@ -111,21 +113,25 @@ export default {
 }
 .projects-col .content h6 {
   color: #989898;
-  font-family: Open Sans,sans-serif;
+  font-family: Open Sans, sans-serif;
   font-size: 14px;
   text-transform: uppercase;
   margin-bottom: 15px;
   line-height: 28px;
-  letter-spacing: .3px;
+  letter-spacing: 0.3px;
 }
 .thumb {
-    overflow: hidden;
-    position: relative;
+  overflow: hidden;
+  position: relative;
 }
 .thumb .rollover {
-  background-image: linear-gradient(to top, rgba(248, 98, 18, 0.6) 0px, rgba(248, 96, 17, 0) 100%);
+  background-image: linear-gradient(
+    to top,
+    rgba(248, 98, 18, 0.6) 0px,
+    rgba(248, 96, 17, 0) 100%
+  );
   transform: translateY(0);
-  transition: opacity .5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
   opacity: 0;
   position: absolute;
   top: 0;

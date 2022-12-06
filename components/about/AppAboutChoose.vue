@@ -24,7 +24,12 @@
                 }}
               </p>
             </div>
-            <div class="row">
+            <div
+              class="row"
+              v-if="
+                whySection.find((one) => one.key === 'why_choose_us_list').value
+              "
+            >
               <div
                 v-for="item in whySection.find(
                   (one) => one.key === 'why_choose_us_list'

@@ -13,7 +13,7 @@
         <div class="col-lg-6">
           <div class="faq-content">
             <div class="faq-accordion">
-              <div class="accordion">
+              <div class="accordion" v-if="faqs.fags.length >= 1">
                 <b-card
                   v-for="faq in faqs.fags.slice(
                     0,
@@ -52,7 +52,7 @@
         <div class="col-lg-6">
           <div class="faq-content">
             <div class="faq-accordion">
-              <div class="accordion">
+              <div class="accordion" v-if="faqs.fags.length >= 1">
                 <b-card
                   v-for="faq in faqs.fags.slice(
                     Math.ceil(faqs.fags.length / 2),

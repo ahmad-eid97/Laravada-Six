@@ -1,29 +1,33 @@
 <template>
-    <div class="side-bar-widget">
-        <h3 class="title">Latest Blog</h3>
-        <div class="widget-popular-post">
-          <article v-for="blog in latestBlogs.blogs.slice(0, 4)" :key="blog.id" class="item">
-            <a href="#" target="_blank" class="thumb">
-              <img class="full-image cover bg1" role="img" :src="blog.image">
+  <div class="side-bar-widget">
+    <h3 class="title">Latest Blog</h3>
+    <div class="widget-popular-post" v-if="latestBlogs.blogs.length">
+      <article
+        v-for="blog in latestBlogs.blogs.slice(0, 4)"
+        :key="blog.id"
+        class="item"
+      >
+        <a href="#" target="_blank" class="thumb">
+          <img class="full-image cover bg1" role="img" :src="blog.image" />
+        </a>
+        <div class="info">
+          <h4 class="title-text">
+            <a href="#" target="_blank">
+              {{ blog.title }}
             </a>
-            <div class="info">
-              <h4 class="title-text">
-                <a href="#" target="_blank">
-                  {{blog.title}}
-                </a>
-              </h4>
-              <p>{{blog.publish_date}}</p>
-            </div>
-          </article>
+          </h4>
+          <p>{{ blog.publish_date }}</p>
         </div>
+      </article>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'AppBlogSideBlogs',
-    props: ["latestBlogs"]
-}
+  name: "AppBlogSideBlogs",
+  props: ["latestBlogs"],
+};
 </script>
 
 <style>

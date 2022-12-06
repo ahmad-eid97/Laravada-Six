@@ -59,7 +59,14 @@
             </div>
             <div class="row">
               <div class="col-lg-6 col-md-6">
-                <ul class="about-list text-start">
+                <ul
+                  class="about-list text-start"
+                  v-if="
+                    experienceSection.find(
+                      (one) => one.key === 'experience_title_list'
+                    ).value
+                  "
+                >
                   <li
                     v-for="item in experienceSection
                       .find((one) => one.key === 'experience_title_list')
@@ -79,7 +86,14 @@
                 </ul>
               </div>
               <div class="col-lg-6 col-md-6">
-                <ul class="about-list about-list-2 text-start">
+                <ul
+                  class="about-list about-list-2 text-start"
+                  v-if="
+                    experienceSection.find(
+                      (one) => one.key === 'experience_title_list'
+                    ).value
+                  "
+                >
                   <li
                     v-for="item in experienceSection
                       .find((one) => one.key === 'experience_title_list')

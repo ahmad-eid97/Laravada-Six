@@ -6,7 +6,7 @@
         <h2>Our Clients Feedback</h2>
       </div>
       <div class="col-12">
-        <swiper :options="swiperOption">
+        <swiper :options="swiperOption" v-if="clients.testimonials.length >= 1">
           <swiper-slide v-for="client in clients.testimonials" :key="client.id">
             <div class="item">
               <div class="row align-items-center">

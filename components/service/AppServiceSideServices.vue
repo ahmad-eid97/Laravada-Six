@@ -1,22 +1,22 @@
 <template>
-    <div class="side-bar-widget">
-        <h3 class="title">Our Services</h3>
-        <div class="side-bar-categories">
-            <ul>
-                <li v-for="feature in serviceDetails.features" :key="feature">
-                  <div class="line-circle"></div>
-                  <a href="#" target="_blank">{{feature}}</a>
-                </li>
-            </ul>
-        </div>
+  <div class="side-bar-widget">
+    <h3 class="title">Our Services</h3>
+    <div class="side-bar-categories">
+      <ul v-if="serviceDetails.features.length >= 1">
+        <li v-for="feature in serviceDetails.features" :key="feature">
+          <div class="line-circle"></div>
+          <a href="#" target="_blank">{{ feature }}</a>
+        </li>
+      </ul>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'AppServiceSideServices',
-    props: ["serviceDetails"]
-}
+  name: "AppServiceSideServices",
+  props: ["serviceDetails"],
+};
 </script>
 
 <style>
@@ -55,7 +55,7 @@ export default {
   border-radius: 50px;
 }
 .side-bar-widget .side-bar-categories ul li .line-circle::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 1px;
   left: 1px;
