@@ -66,7 +66,7 @@
       <div class="row align-items-center">
         <div class="col-lg-7 col-sm-7 col-md-7">
           <div class="blog-tag">
-            <ul>
+            <ul v-if="blogDetails.tags.length >= 1">
               <li><i class="bx bx-purchase-tag-alt"></i> Tags:</li>
               <li v-for="tag in blogDetails.tags.slice(0, 5)" :key="tag">
                 <a href="#">{{ tag }}</a>
@@ -104,7 +104,7 @@
       <div class="comment-title">
         <h3 class="title">Comments ({{ blogDetails.comments.length }})</h3>
       </div>
-      <ul class="comment-list">
+      <ul class="comment-list" v-if="blogDetails.comments.length >= 1">
         <li v-for="comment in blogDetails.comments" :key="comment.id">
           <img :src="comment.image" alt="Image" />
           <h3>{{ comment.username }}</h3>

@@ -14,7 +14,7 @@
       </li>
     </ul>
     <CoolLightBox
-      :items="media"
+      :items="blogDetails.gallery.map((one) => (one ? one : ''))"
       :index="imageIndex"
       @close="imageIndex = null"
     />
