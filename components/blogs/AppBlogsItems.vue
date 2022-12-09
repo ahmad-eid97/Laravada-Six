@@ -5,11 +5,11 @@
         <span class="sp-color2">Latest Blog</span>
         <h2>Let’s Check Some Latest Blog</h2>
       </div>
-      <div class="row pt-45" v-if="blogs.blogs.length >= 1">
+      <div class="row pt-45" v-if="blogs.blogs.length">
         <div
           v-for="blog in blogs.blogs"
           :key="blog.id"
-          class="col-lg-4 col-md-6 mb-4"
+          class="col-lg-4 col-md-6"
           @click="$router.push(localePath(`/blog/${blog.id}`))"
         >
           <div class="blog-card">
@@ -104,7 +104,6 @@ export default {
   transition: 0.9s;
   border: 1px solid #f1f1f1;
   transform: translateY(0px);
-  height: 100%;
 }
 .blog-card:hover {
   transform: translateY(-15px);
@@ -160,7 +159,7 @@ export default {
 .blog-card .content ul li a {
   color: #212529;
 }
-.blog-card .content ul li a svg {
+.blog-card .content ul li a i {
   font-size: 20px;
   color: var(--main-color);
   margin-right: 5px;

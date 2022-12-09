@@ -114,6 +114,9 @@ export default {
 }
 .service-article .service-article-img img {
   border-radius: 12px;
+  width: 100%;
+  height: auto;
+  max-height: 500px;
 }
 .service-article h2 {
   font-size: 26px;

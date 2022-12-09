@@ -219,7 +219,8 @@ export default {
 }
 .blog-article .blog-article-img img {
   border-radius: 12px;
-  max-width: 100%;
+  width: 100%;
+  height: 500px;
 }
 .blog-article .blog-article-img .blog-article-tag {
   background-color: var(--main-color);

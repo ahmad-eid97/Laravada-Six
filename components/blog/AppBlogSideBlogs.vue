@@ -1,13 +1,14 @@
 <template>
   <div class="side-bar-widget">
     <h3 class="title">Latest Blog</h3>
-    <div class="widget-popular-post" v-if="latestBlogs.blogs.length">
+    <div class="widget-popular-post" v-if="latestBlogs.blogs.length >= 1">
       <article
         v-for="blog in latestBlogs.blogs.slice(0, 4)"
         :key="blog.id"
         class="item"
+        @click="$router.push(localePath(`/blog/${blog.id}`))"
       >
-        <a href="#" target="_blank" class="thumb">
+        <a :href="localePath(`/blog/${blog.id}`)" class="thumb">
           <img class="full-image cover bg1" role="img" :src="blog.image" />
         </a>
         <div class="info">
@@ -54,12 +55,15 @@ export default {
   margin-bottom: 13px;
   padding-bottom: 8px;
   border-bottom: 1px solid #e2e2e2;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 .side-bar-widget .widget-popular-post .item .thumb {
-  float: left;
+  /* float: left;
   overflow: hidden;
   position: relative;
-  margin-right: 15px;
+  margin-right: 15px; */
 }
 .side-bar-widget .widget-popular-post .item .thumb .full-image {
   width: 80px;

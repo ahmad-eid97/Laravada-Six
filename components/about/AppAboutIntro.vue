@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class="col-lg-6">
-          <div class="testSide">
+          <div class="testSide p-4">
             <h5>
               {{ aboutSection.find((one) => one.key === "about_title").value }}
             </h5>
@@ -114,7 +114,7 @@ export default {
   font-weight: 800;
   letter-spacing: -1px;
   line-height: 42px;
-  text-align: left;
+  /* text-align: left; */
   margin-top: 10px;
   margin-right: 0px;
   margin-bottom: 15px;

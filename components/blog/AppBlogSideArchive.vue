@@ -1,8 +1,8 @@
 <template>
   <div class="side-bar-widget">
     <h3 class="title">Blog Categories</h3>
-    <div class="side-bar-categories">
-      <ul v-if="blogDetails.features.length >= 1">
+    <div class="side-bar-categories" v-if="blogDetails.features.length >= 1">
+      <ul>
         <li v-for="feature in blogDetails.features" :key="feature">
           <div class="line-circle"></div>
           <a href="#" target="_blank">{{ feature }}</a>

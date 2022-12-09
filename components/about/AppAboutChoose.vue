@@ -35,14 +35,16 @@
                   (one) => one.key === 'why_choose_us_list'
                 ).value"
                 :key="item"
-                class="col-lg-6 col-6"
+                class="col-12 col-sm-6"
               >
                 <div class="choose-content-card">
                   <div class="content">
                     <i :class="item.icon"></i>
-                    <h3>{{ item.title }}</h3>
+                    <div>
+                      <h3>{{ item.title }}</h3>
+                      <p>{{ item.description }}</p>
+                    </div>
                   </div>
-                  <p>{{ item.description }}</p>
                 </div>
               </div>
             </div>
@@ -97,11 +99,10 @@ export default {
   font-weight: 800;
   letter-spacing: -1px;
   line-height: 42px;
-  text-align: left;
+  /* text-align: left; */
+  text-align: unset;
   margin-top: 10px;
-  margin-right: 0px;
   margin-bottom: 15px;
-  margin-left: 0px;
 }
 .choose-area .choose-content .section-title p {
   color: #fff;
@@ -115,19 +116,22 @@ export default {
 .choose-area .choose-content .choose-content-card .content {
   padding-top: 20px;
   position: relative;
-  padding-left: 75px;
+  /* padding-left: 75px; */
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 .choose-area .choose-content .choose-content-card .content i {
-  position: absolute;
+  /* position: absolute;
   top: 10px;
-  left: 0;
+  left: 0; */
   font-size: 60px;
   color: #fff;
   line-height: 1;
 }
 .choose-area .choose-content .choose-content-card .content h3 {
   margin-top: 10px;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
   font-weight: 800;
   color: #fff;
   font-size: 22px;
