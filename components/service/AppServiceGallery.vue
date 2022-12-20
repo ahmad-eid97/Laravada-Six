@@ -1,7 +1,7 @@
 <template>
-  <div class="side-bar-widget">
+  <div class="side-bar-widget" v-if="serviceDetails.gallery.length >= 1">
     <h3 class="title">Gallery</h3>
-    <ul class="blog-gallery" v-if="serviceDetails.gallery.length >= 1">
+    <ul class="blog-gallery">
       <li
         v-for="(image, index) in serviceDetails.gallery.slice(0, 6)"
         :key="index"

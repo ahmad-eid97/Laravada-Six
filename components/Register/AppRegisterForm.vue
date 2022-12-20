@@ -1,75 +1,197 @@
 <template>
-    <div class="user-area pt-100 pb-70">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="user-img">
-                        <img src="/assets/images/user-img.jpg" alt="Images">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="user-form">
-                        <div class="contact-form">
-                            <h2>Register Now</h2>
-                            <form>
-                                <div class="row">
-                                    <div class="col-lg-12 ">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" required="" data-error="Please enter your Username" placeholder="Enter Your Username">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" required="" data-error="Please enter your Username or Email" placeholder="Enter Your Email">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <input class="form-control" type="password" name="password" placeholder="Password">
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-lg-12 ">
-                                        <button type="submit" class="default-btn btn-bg-two">
-                                            Register Now
-                                        </button>
-                                    </div>
-                                    <div class="col-12">
-                                        <p class="account-desc">
-                                            Already have an account? 
-                                            <router-link to="login">Log In</router-link>
-                                        </p>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="user-area pt-100 pb-70">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="user-img">
+            <img src="/assets/images/user-img.jpg" alt="Images" />
+          </div>
         </div>
+        <div class="col-lg-6">
+          <div class="user-form">
+            <div class="contact-form">
+              <h2>Register Now</h2>
+              <form>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        :class="emptyError && !name ? 'errorInput' : ''"
+                        required=""
+                        data-error="Please enter your Username"
+                        placeholder="Enter Your Username"
+                        v-model="name"
+                      />
+                      <span v-if="emptyError && !name" class="errorHint"
+                        >Field is required</span
+                      >
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group">
+                      <input
+                        type="email"
+                        class="form-control"
+                        :class="
+                          (emptyError && !email) || !validEmail
+                            ? 'errorInput'
+                            : ''
+                        "
+                        required=""
+                        data-error="Please enter your Username or Email"
+                        placeholder="Enter Your Email"
+                        v-model="email"
+                        @change="typingEmail"
+                      />
+                      <span v-if="emptyError && !email" class="errorHint"
+                        >Field is required</span
+                      >
+                      <span v-if="!validEmail && email" class="errorHint"
+                        >Email is invalid</span
+                      >
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group">
+                      <input
+                        class="form-control"
+                        :class="emptyError && !password ? 'errorInput' : ''"
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        v-model="password"
+                      />
+                      <span v-if="emptyError && !password" class="errorHint"
+                        >Field is required</span
+                      >
+                    </div>
+                  </div>
+
+                  <div class="col-lg-12">
+                    <button
+                      type="button"
+                      class="default-btn btn-bg-two"
+                      @click="register"
+                    >
+                      Register Now
+                    </button>
+                  </div>
+                  <div class="col-12">
+                    <p class="account-desc">
+                      Already have an account?
+                      <router-link to="login">Log In</router-link>
+                    </p>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
+import * as EmailValidator from "email-validator";
+
 export default {
-    name: 'AppRegisterForm'
-}
+  name: "AppRegisterForm",
+  data() {
+    return {
+      name: "",
+      email: "",
+      password: "",
+      validEmail: true,
+      emptyError: false,
+    };
+  },
+  methods: {
+    typingEmail() {
+      if (EmailValidator.validate(this.email)) {
+        this.validEmail = true;
+      }
+    },
+    async register() {
+      const data = {
+        name: this.name,
+        email: this.email,
+        password: this.password,
+      };
+
+      if (!this.name || !this.email || !this.password) {
+        this.emptyError = true;
+        return this.$toast.error("Please fill all fields!");
+      }
+
+      if (!EmailValidator.validate(this.email)) {
+        this.validEmail = false;
+        return this.$toast.error("Email is invalid!");
+      }
+
+      const response = await this.$axios.post("/users/auth/register", data);
+
+      console.log(response);
+
+      if (!response.data.success) {
+        if (response.data.data) {
+          if (response.data.data.name) {
+            response.data.data.name.forEach((error) => {
+              return this.$toast.error(error);
+            });
+          }
+          if (response.data.data.email) {
+            response.data.data.email.forEach((error) => {
+              return this.$toast.error(error);
+            });
+          }
+          if (response.data.data.password) {
+            response.data.data.password.forEach((error) => {
+              return this.$toast.error(error);
+            });
+          }
+        } else {
+          return this.$toast.error(response.data.message);
+        }
+        return;
+      }
+
+      this.$store.commit("setUserData", response.data.data.user);
+
+      this.emptyError = false;
+      this.validEmail = true;
+
+      this.$cookies.set("cms-auth", response.data.data.token, {
+        path: "/",
+        maxAge: 60 * 60 * 24 * 7,
+      });
+
+      this.$cookies.set("cms-user", JSON.stringify(response.data.data.user), {
+        path: "/",
+        maxAge: 60 * 60 * 24 * 7,
+      });
+
+      this.$router.push(this.localePath("/"));
+    },
+  },
+};
 </script>
 
 <style>
-
 .contact-form-area h2 {
-    font-size: 35px;
-    font-weight: 600;
-    margin-top: 0;
-    line-height: 1.2;
-    color:#212529;
-    margin-bottom: 0;
+  font-size: 35px;
+  font-weight: 600;
+  margin-top: 0;
+  line-height: 1.2;
+  color: #212529;
+  margin-bottom: 0;
 }
 .contact-info::before {
-  content: '';
+  content: "";
   position: absolute;
-  opacity: .1;
+  opacity: 0.1;
   z-index: -1;
   top: 0;
   left: 0;
@@ -82,17 +204,17 @@ export default {
   background-repeat: no-repeat;
 }
 .contact-form-area .contact-info {
-    margin-bottom: 30px;
-    background-color:var(--main-color);
-    padding: 52px 35px 22px;
-    border-radius: 12px;
-    position: relative;
-    z-index: 1;
+  margin-bottom: 30px;
+  background-color: var(--main-color);
+  padding: 52px 35px 22px;
+  border-radius: 12px;
+  position: relative;
+  z-index: 1;
 }
 .contact-form-area .contact-info span {
-    color: #ffefe6;
-    display: block;
-    margin-bottom: 5px;
+  color: #ffefe6;
+  display: block;
+  margin-bottom: 5px;
 }
 .contact-form-area .contact-info h2 {
   color: #fff;
@@ -120,7 +242,7 @@ export default {
   line-height: 45px;
   background-color: #ffefe6;
   font-size: 20px;
-  color:var(--main-color);
+  color: var(--main-color);
   border-radius: 50px;
   border: 1px solid #ffefe6;
   margin-bottom: 10px;
@@ -174,7 +296,7 @@ export default {
   top: 5px;
   left: 0;
   width: auto;
-height: auto;
+  height: auto;
 }
 .contact-form .agree-label label {
   font-weight: 500;
@@ -182,11 +304,12 @@ height: auto;
   margin-left: 25px;
 }
 .contact-form .agree-label label a,
-.contact-form  a {
+.contact-form a {
   color: var(--main-color);
 }
 
-.contact-form .default-btn, .contact-form .default-btn:hover {
+.contact-form .default-btn,
+.contact-form .default-btn:hover {
   background-color: var(--main-color);
   border-radius: 12px;
   color: #fff;
@@ -194,8 +317,14 @@ height: auto;
   font-weight: bold;
   border: none;
 }
+.errorHint {
+  color: #ff7675;
+}
+.errorInput {
+  border-color: #ff7675 !important;
+}
 
 button {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 </style>

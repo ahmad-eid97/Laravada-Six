@@ -1,7 +1,7 @@
 <template>
-  <div class="side-bar-widget">
+  <div class="side-bar-widget" v-if="serviceDetails.tags.length >= 1">
     <h3 class="title">Tag Cloud</h3>
-    <ul class="side-bar-widget-tag" v-if="serviceDetails.tags.length >= 1">
+    <ul class="side-bar-widget-tag">
       <li v-for="tag in serviceDetails.tags" :key="tag">
         <a href="#">{{ tag }}</a>
       </li>

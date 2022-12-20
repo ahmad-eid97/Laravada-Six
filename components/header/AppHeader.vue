@@ -19,6 +19,8 @@
           >
           <b-nav-item :to="localePath('/about')">About</b-nav-item>
           <b-nav-item :to="localePath('/blogs')">Blogs</b-nav-item>
+          <b-nav-item :to="localePath('/careers')">Career</b-nav-item>
+          <b-nav-item :to="localePath('/events')">Events</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
       <a href="#" class="phone">
@@ -27,6 +29,9 @@
       </a>
       <a to="contact" class="btn"> Free Qoute </a>
       <lang-switch></lang-switch>
+      <div class="logout" @click="logout">
+        <i class="fa-regular fa-right-from-bracket"></i>
+      </div>
       <b-navbar-toggle target="navbar-toggle-collapse">
         <template #default="{ expanded }">
           <span
@@ -65,6 +70,12 @@ export default {
   },
   mounted() {},
   methods: {
+    logout() {
+      this.$store.commit("setUserData", null);
+      this.$cookies.remove("cms-auth");
+      this.$cookies.remove("cms-user");
+      window.location.href = "/login";
+    },
     handleScroll() {
       if (window.pageYOffset > 200) {
         if (this.topOfPage) this.topOfPage = false;
@@ -79,6 +90,7 @@ export default {
 header {
   box-shadow: rgba(0, 0, 0, 0.07) 0px 5px 5px 0px;
   padding: 0;
+  padding: 0 20px;
 }
 .navbar-brand {
   margin: 0 0 0 24px;
@@ -100,6 +112,17 @@ header {
   transition: all calc(300 * 1ms) cubic-bezier(0.42, 0.01, 0.58, 1);
   z-index: 999999998;
   background-color: transparent;
+}
+.logout {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--main-color);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 .nav-item.active::after,
 .nav-item:hover:after {
