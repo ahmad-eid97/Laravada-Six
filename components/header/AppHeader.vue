@@ -29,7 +29,7 @@
       </a>
       <a to="contact" class="btn"> Free Qoute </a>
       <lang-switch></lang-switch>
-      <div class="logout" @click="logout">
+      <div v-if="$store.state.user" class="logout" @click="logout">
         <i class="fa-regular fa-right-from-bracket"></i>
       </div>
       <b-navbar-toggle target="navbar-toggle-collapse">
@@ -74,7 +74,7 @@ export default {
       this.$store.commit("setUserData", null);
       this.$cookies.remove("cms-auth");
       this.$cookies.remove("cms-user");
-      window.location.href = "/login";
+      this.$router.push(this.localePath("/login"));
     },
     handleScroll() {
       if (window.pageYOffset > 200) {
