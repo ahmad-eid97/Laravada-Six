@@ -1,37 +1,34 @@
 <template>
   <div class="jobsListed">
-    <h6>Trending Jobs</h6>
-    <h1>All Popular Listed jobs</h1>
+    <h6>Trending Products</h6>
+    <h1>All Popular Listed products</h1>
 
     <div class="row justify-content-center">
       <div
-        v-for="job in jobsList"
-        :key="job"
+        v-for="product in productsList"
+        :key="product"
         class="col-md-6 col-lg-4 col-xl-3 mb-4"
       >
         <div class="job">
           <span
-            v-if="job.category"
+            v-if="product.category"
             class="category"
             :style="{ backgroundColor: random_rgba() }"
-            >{{ job.category.name }}</span
+            >{{ product.category.name }}</span
           >
           <img
-            v-if="job.photo"
-            :src="job.photo"
+            v-if="product.images"
+            :src="product.images[0]"
             alt="jobImage"
-            @click="$router.push(localePath(`/career/${job.id}`))"
+            @click="$router.push(localePath(`/product/${product.id}`))"
           />
-          <h3 @click="$router.push(localePath(`/career/${job.id}`))">
-            {{ job.title.substring(0, 50) }}
-            {{ job.title.length > 50 ? "..." : "" }}
+          <h3 @click="$router.push(localePath(`/product/${product.id}`))">
+            {{ product.title.substring(0, 50) }}
+            {{ product.title.length > 50 ? "..." : "" }}
           </h3>
-          <div class="tags" v-if="job.skills">
-            <span
-              v-for="skill in job.skills.split('\r\n').slice(0, 3)"
-              :key="skill"
-              >{{ skill }}</span
-            >
+          <div class="price">
+            <p class="pre">${{ product.previous_price }}</p>
+            <p>${{ product.current_price }}</p>
           </div>
         </div>
       </div>
@@ -55,7 +52,7 @@
 
 <script>
 export default {
-  props: ["jobsList"],
+  props: ["productsList"],
   data() {
     return {};
   },
@@ -117,20 +114,22 @@ export default {
     h3 {
       cursor: pointer;
       text-align: center;
-      font-size: 1.3rem;
-      margin: 10px 0 20px;
     }
-    .tags {
+    .price {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+      align-items: center;
       gap: 10px;
-      span {
-        background: #f1f3f5;
-        padding: 5px 10px;
-        border-radius: 5px;
-        font-size: 1rem;
-        text-align: center;
+      p {
+        font-size: 1.3rem;
+        opacity: 0.7;
+        margin: 0;
+        &:not(.pre) {
+          color: var(--main-color);
+          font-weight: bold;
+        }
+        &.pre {
+          text-decoration: line-through;
+        }
       }
     }
   }

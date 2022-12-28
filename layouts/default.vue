@@ -21,6 +21,9 @@ export default {
     AppFooter
   },
   watch: {
+    $route(to, from) {
+      window.scrollTo(0, 0);
+    },
   },
 
 

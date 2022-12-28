@@ -22,7 +22,7 @@ export default {
     return {};
   },
   async asyncData({ $axios, app }) {
-    const careerCategories = await $axios.get(`/jobCategories?limit=12`, {
+    const careerCategories = await $axios.get(`/jobCategories`, {
       headers: {
         "Accept-Language": app.i18n.locale,
       },

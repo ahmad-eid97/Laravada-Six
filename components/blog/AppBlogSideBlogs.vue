@@ -1,7 +1,7 @@
 <template>
-  <div class="side-bar-widget">
+  <div class="side-bar-widget" v-if="latestBlogs.blogs.length >= 1">
     <h3 class="title">Latest Blog</h3>
-    <div class="widget-popular-post" v-if="latestBlogs.blogs.length >= 1">
+    <div class="widget-popular-post">
       <article
         v-for="blog in latestBlogs.blogs.slice(0, 4)"
         :key="blog.id"

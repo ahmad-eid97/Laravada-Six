@@ -6,6 +6,7 @@ export default () => {
       user: null,
       websiteSettings: [],
       footerData: {},
+      cartItems: [],
     },
     getters: {},
     mutations: {
