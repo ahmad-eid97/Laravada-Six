@@ -1,24 +1,22 @@
 <template>
   <div id="app" :class="$i18n.locale === 'en' ? 'english' : 'arabic'">
-    <app-header ></app-header>
+    <app-header></app-header>
 
     <router-view />
 
-    <app-footer ></app-footer>
-
+    <app-footer></app-footer>
   </div>
 </template>
 
-
 <script>
-import AppHeader from '../components/header/AppHeader.vue'
-import AppFooter from '../components/footer/AppFooter.vue'
+import AppHeader from "../components/header/AppHeader.vue";
+import AppFooter from "../components/footer/AppFooter.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-        AppHeader,
-    AppFooter
+    AppHeader,
+    AppFooter,
   },
   watch: {
     $route(to, from) {
@@ -26,8 +24,7 @@ export default {
     },
   },
 
-
-  created () {
+  created() {
     // this.$route.params.lang = localStorage.getItem('code');
     // if (this.$route.params.lang === 'ar') {
     //   localStorage.setItem('code', 'ar');
@@ -44,9 +41,12 @@ export default {
     // }
   },
   mounted() {
-        // this.$route.params.lang  = this.lang;
-  }
-}
+    // this.$route.params.lang  = this.lang;
+    window.scrollTo(0, 0);
+    this.$store.state.cartItems = localStorage.getItem("laravadaCart")
+      ? JSON.parse(localStorage.getItem("laravadaCart"))
+      : [];
+  },
+};
 </script>
-<style>
-</style>
+<style></style>
