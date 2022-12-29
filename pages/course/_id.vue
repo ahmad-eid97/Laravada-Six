@@ -33,3 +33,9 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss">
+.courseDetails {
+  margin-bottom: 100px;
+}
+</style>
