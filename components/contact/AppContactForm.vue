@@ -238,13 +238,15 @@ export default {
 
         this.validEmail = true;
 
-        const response = await this.$axios.$post("/contacts", dataToSend);
+        this.$store.state.showLoader = true;
 
-        console.log(response);
+        const response = await this.$axios.$post("/contacts", dataToSend);
 
         if (response.success) {
           this.$toast.success("Message sent successfully");
         }
+
+        this.$store.state.showLoader = false;
       } else {
         this.emptyFields = true;
         this.$toast.error("Please fill all fields!");

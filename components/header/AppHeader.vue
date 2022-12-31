@@ -347,6 +347,7 @@ header .btn:hover {
   top: 0;
   z-index: 10;
   left: 0;
+  padding: 0 20px;
 }
 @media screen and (max-width: 1049px) {
   header .phone {

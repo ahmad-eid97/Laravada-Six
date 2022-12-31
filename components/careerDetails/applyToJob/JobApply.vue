@@ -127,6 +127,8 @@ export default {
       let filesData = new FormData();
       filesData.append("upload", this.file);
 
+      this.$store.state.showLoader = true;
+
       const response = await this.$axios.post(
         "/laravel-filemanager/upload",
         filesData,
@@ -138,6 +140,7 @@ export default {
       );
 
       if (response.data.error) {
+        this.$store.state.showLoader = false;
         return this.$toast.error(response.data.error.message);
       }
 
@@ -150,6 +153,7 @@ export default {
       });
 
       if (applyResponse.data.success) {
+        this.$store.state.showLoader = false;
         return this.$toast.success("job application sent successfully");
       }
 
@@ -158,6 +162,8 @@ export default {
       this.phone = "";
       this.fileUrl = "";
       this.file = null;
+
+      this.$store.state.showLoader = false;
     },
   },
 };
