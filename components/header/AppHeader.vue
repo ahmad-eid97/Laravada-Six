@@ -37,6 +37,7 @@
             :to="localePath('/login')"
             v-if="$store.state.user"
             @click="logout"
+            class="outLarge"
             >Logout</b-nav-item
           >
         </b-navbar-nav>
@@ -243,6 +244,12 @@ header {
     @include sm {
       width: 200px;
     }
+  }
+}
+.outLarge {
+  display: none;
+  @include md {
+    display: inline;
   }
 }
 .nav-item::after {
