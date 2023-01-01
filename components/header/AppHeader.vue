@@ -13,7 +13,7 @@
       <cart />
     </div>
     <b-navbar :class="!topOfPage ? 'onScroll' : ''" toggleable="lg">
-      <b-navbar-brand :href="localePath('/')">
+      <b-navbar-brand :href="localePath('/')" class="logo">
         <img src="/assets/images/logo.png" alt="logoImage" />
       </b-navbar-brand>
 
@@ -33,6 +33,12 @@
           <b-nav-item :to="localePath('/blogs')">Blogs</b-nav-item>
           <b-nav-item :to="localePath('/careers')">Career</b-nav-item>
           <b-nav-item :to="localePath('/events')">Events</b-nav-item>
+          <b-nav-item
+            :to="localePath('/login')"
+            v-if="$store.state.user"
+            @click="logout"
+            >Logout</b-nav-item
+          >
         </b-navbar-nav>
       </b-collapse>
       <a href="#" class="phone">
@@ -40,27 +46,29 @@
         +11111111111
       </a>
       <a to="contact" class="btn"> Free Qoute </a>
-      <lang-switch></lang-switch>
-      <div class="m-0 cartIcon" @click="openCart = !openCart">
-        <span>{{ $store.state.cartItems.length }}</span>
-        <i class="fa-regular fa-cart-plus"></i>
+      <div class="d-flex align-items-center">
+        <lang-switch></lang-switch>
+        <div class="m-0 cartIcon" @click="openCart = !openCart">
+          <span>{{ $store.state.cartItems.length }}</span>
+          <i class="fa-regular fa-cart-plus"></i>
+        </div>
+        <div v-if="$store.state.user" class="logout" @click="logout">
+          <i class="fa-regular fa-right-from-bracket"></i>
+        </div>
+        <b-navbar-toggle target="navbar-toggle-collapse">
+          <template #default="{ expanded }">
+            <span
+              class="menu-trigger"
+              :class="expanded ? 'active' : ''"
+              id="menu03"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </template>
+        </b-navbar-toggle>
       </div>
-      <div v-if="$store.state.user" class="logout" @click="logout">
-        <i class="fa-regular fa-right-from-bracket"></i>
-      </div>
-      <b-navbar-toggle target="navbar-toggle-collapse">
-        <template #default="{ expanded }">
-          <span
-            class="menu-trigger"
-            :class="expanded ? 'active' : ''"
-            id="menu03"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </template>
-      </b-navbar-toggle>
     </b-navbar>
   </header>
 </template>
@@ -112,8 +120,10 @@ export default {
 <style lang="scss">
 header {
   box-shadow: rgba(0, 0, 0, 0.07) 0px 5px 5px 0px;
-  padding: 0;
-  padding: 0 20px;
+  padding: 10px 20px;
+  @include sm {
+    padding: 8px 5px !important;
+  }
   .cart {
     width: 390px;
     height: 100vh;
@@ -173,6 +183,9 @@ header {
     &.opened {
       transform: translateX(0);
     }
+    @include xs {
+      width: 350px;
+    }
   }
   .cartIcon {
     border: 1px solid var(--main-color);
@@ -195,9 +208,17 @@ header {
       display: grid;
       place-content: center;
       font-size: 1.2rem;
+      @include sm {
+        font-size: 1rem;
+      }
     }
     i {
       color: var(--main-color);
+    }
+    @include sm {
+      width: 40px;
+      height: 40px;
+      margin: 0 0px !important;
     }
     &:hover {
       background-color: var(--main-color);
@@ -216,6 +237,13 @@ header {
 .nav-item {
   position: relative;
   margin: 0 12px;
+}
+.logo {
+  img {
+    @include sm {
+      width: 200px;
+    }
+  }
 }
 .nav-item::after {
   content: " ";
@@ -238,6 +266,10 @@ header {
   place-items: center;
   font-size: 1.2rem;
   cursor: pointer;
+  margin: 0 15px;
+  @include md {
+    display: none;
+  }
 }
 .nav-item.active::after,
 .nav-item:hover:after {
@@ -291,6 +323,7 @@ header .btn:hover {
 .navbar-toggler:focus {
   border: none;
   box-shadow: none;
+  margin: 0;
 }
 .menu-trigger,
 .menu-trigger span {
@@ -347,7 +380,7 @@ header .btn:hover {
   top: 0;
   z-index: 10;
   left: 0;
-  padding: 0 20px;
+  padding: 15px 20px;
 }
 @media screen and (max-width: 1049px) {
   header .phone {
