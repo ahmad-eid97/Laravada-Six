@@ -51,7 +51,9 @@
         :class="$i18n.locale === 'ar' ? 'arabic' : ''"
         v-if="file"
       >
-        <span>{{ file.name }}</span>
+        <span
+          >{{ file.name.substring(0, 50) }}
+          {{ file.name.length > 50 ? "..." : "" }}</span
         <i class="fa-solid fa-xmark" @click="removeFile"></i>
       </div>
       <button @click="clickFile">Choose File</button>
