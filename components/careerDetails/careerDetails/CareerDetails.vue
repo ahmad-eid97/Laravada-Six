@@ -111,7 +111,7 @@ export default {
         margin: 0;
       }
       img {
-        width: 150px;
+        width: 120px;
         height: 100px;
         object-fit: contain;
       }
@@ -127,7 +127,6 @@ export default {
         border: 1px solid #ccc;
         background: transparent;
         border-radius: 5px;
-        min-width: 200px;
         &.apply {
           background: var(--main-color);
           color: #fff;

@@ -86,6 +86,7 @@ export default {
     color: #fff;
     font-size: 1rem;
     border: 1px solid var(--main-color);
+    border-radius: 30px;
     &:hover {
       color: var(--main-color);
       border-color: var(--main-color);

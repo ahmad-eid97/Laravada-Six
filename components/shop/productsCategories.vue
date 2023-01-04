@@ -8,6 +8,7 @@
         v-for="category in productsCategories"
         :key="category"
         class="col-md-4 col-lg-3 col-xl-2 mb-4"
+        @click="$router.push(`/product-category/${category.id}`)"
       >
         <div class="category" :style="{ backgroundColor: random_rgba() }">
           <!-- <i :class="category.icon"></i> -->
@@ -93,6 +94,7 @@ export default {
     }
     h5 {
       text-align: center;
+      cursor: pointer;
     }
   }
   .btn {

@@ -24,7 +24,9 @@
               class="addToCart"
               :class="$i18n.locale === 'ar' ? 'arabic' : ''"
             >
-              <span class="text" @click="addToCart(course)">Add To Cart</span>
+              <span class="text" @click="addToCart(course)"
+                >Enroll In Course</span
+              >
               <span><i class="fa-regular fa-cart-plus"></i></span>
             </div>
           </div>
@@ -73,20 +75,24 @@ export default {
         title: course.title,
         current_price: course.current_price,
         quantity: 1,
+        type: "course",
       };
       let cartItems = localStorage.getItem("laravadaCart")
         ? JSON.parse(localStorage.getItem("laravadaCart"))
         : [];
 
-      let aleradyExists = cartItems.find((one) => one.id === item.id);
+      let aleradyExists = cartItems.find(
+        (one) => one.id === item.id && one.title === item.title
+      );
       if (aleradyExists) {
-        aleradyExists.quantity = aleradyExists.quantity + 1;
+        this.$toast.error("You are already enrolld in this course");
+        return;
       } else {
         cartItems.unshift(item);
       }
       this.$store.state.cartItems = cartItems;
       localStorage.setItem("laravadaCart", JSON.stringify(cartItems));
-      this.$toast.success("Product added to cart successfully");
+      this.$toast.success("You have been enrolled in this course successfully");
     },
   },
 };

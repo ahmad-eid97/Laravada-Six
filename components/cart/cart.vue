@@ -1,7 +1,7 @@
 <template>
   <div class="insideCart">
     <div class="wrapper">
-      <h2 v-if="!$store.state.cartItems.length">No items in cart yet!</h2>
+      <h4 v-if="!$store.state.cartItems.length">No items in cart yet!</h4>
       <div
         class="cartItem"
         v-for="item in $store.state.cartItems"
@@ -14,9 +14,9 @@
               {{ item.title.substring(0, 20) }}
               {{ item.title.length > 20 && "..." }}
             </h3>
-            <p>Qunatity: {{ item.quantity }}</p>
+            <p v-if="!item.type">Qunatity: {{ item.quantity }}</p>
             <p>Price: {{ item.current_price }}</p>
-            <div>
+            <div v-if="!item.type">
               <button @click="decrease(item)">-</button>
               <button @click="increase(item)">+</button>
             </div>
@@ -49,7 +49,9 @@ export default {
   methods: {
     removeFromCart(cartItem) {
       let cartItems = this.$store.state.cartItems;
-      const updatedCart = cartItems.filter((item) => item.id !== cartItem.id);
+      const updatedCart = cartItems.filter(
+        (item) => item.id !== cartItem.id && item.title !== cartItem.title
+      );
       this.$store.state.cartItems = updatedCart;
       localStorage.setItem("laravadaCart", JSON.stringify(updatedCart));
       this.$toast.success("Product removed from cart successfully");
@@ -83,22 +85,23 @@ export default {
   height: 100%;
   .wrapper {
     height: 100%;
-    padding: 20px 10px 130px;
+    padding: 20px 10px 170px;
     overflow-y: auto;
   }
-  h2 {
+  h4 {
     text-align: center;
-    font-size: 1.4rem;
   }
   .cartItem {
     display: flex;
     gap: 10px;
+    /* align-items: center; */
     border-bottom: 1px solid rgb(233, 233, 233);
     padding: 20px 0;
     img {
       width: 140px;
       min-width: 140px;
-      height: 100px;
+      height: 120px;
+      object-fit: contain;
     }
     .details {
       display: flex;
@@ -113,6 +116,7 @@ export default {
         font-size: 1.2rem;
       }
       p {
+        font-size: 1rem;
         opacity: 0.8;
       }
       button {
@@ -121,6 +125,7 @@ export default {
         border-radius: 50%;
         background-color: rgb(236, 236, 236);
         border: 1px solid #ccc;
+        font-size: 1rem;
         color: rgb(119, 119, 119);
         &:hover {
           filter: brightness(0.9);
@@ -148,21 +153,20 @@ export default {
     left: 0;
     width: 100%;
     background-color: #fff;
-    margin-bottom: 1px;
-    padding: 0 5px;
+    padding-bottom: 1px;
     .total {
       text-align: center;
       background-color: rgb(235, 235, 235);
       padding: 10px 20px;
       font-size: 1.2rem;
-      font-weight: bold;
       margin-bottom: 5px;
+      font-weight: bold;
     }
     button {
       background: var(--main-color);
       border: 1px solid var(--main-color);
       color: #fff;
-      font-size: 1rem;
+      font-size: 1.1rem;
       padding: 10px 20px;
       width: 100%;
       &:hover {

@@ -13,6 +13,7 @@
             v-if="product.category"
             class="category"
             :style="{ backgroundColor: random_rgba() }"
+            @click="$router.push(`/product-category/${product.category.id}`)"
             >{{ product.category.name }}</span
           >
           <img
@@ -28,6 +29,10 @@
           <div class="price">
             <p class="pre">${{ product.previous_price }}</p>
             <p>${{ product.current_price }}</p>
+          </div>
+          <div class="addToCart" :class="$i18n.locale === 'ar' ? 'arabic' : ''">
+            <span class="text" @click="addToCart(product)">Add To Cart</span>
+            <span><i class="fa-regular fa-cart-plus"></i></span>
           </div>
         </div>
       </div>
@@ -72,6 +77,30 @@ export default {
         ")"
       );
     },
+    addToCart(product) {
+      const item = {
+        id: product.id,
+        images: product.images,
+        title: product.title,
+        current_price: product.current_price,
+        quantity: 1,
+      };
+      let cartItems = localStorage.getItem("laravadaCart")
+        ? JSON.parse(localStorage.getItem("laravadaCart"))
+        : [];
+
+      let aleradyExists = cartItems.find(
+        (one) => one.id === item.id && one.title === item.title
+      );
+      if (aleradyExists) {
+        aleradyExists.quantity = aleradyExists.quantity + 1;
+      } else {
+        cartItems.unshift(item);
+      }
+      this.$store.state.cartItems = cartItems;
+      localStorage.setItem("laravadaCart", JSON.stringify(cartItems));
+      this.$toast.success("Product added to cart successfully");
+    },
   },
 };
 </script>
@@ -87,8 +116,9 @@ export default {
     margin-bottom: 50px;
   }
   .job {
+    background: #f0f0f0;
     border: 1px solid #e5e6e7;
-    padding: 40px 20px 20px;
+    padding: 40px 20px 30px;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -102,6 +132,7 @@ export default {
       right: 10px;
       padding: 0px 10px;
       border-radius: 5px;
+      cursor: pointer;
     }
     img {
       width: 100%;
@@ -113,6 +144,7 @@ export default {
     h3 {
       cursor: pointer;
       text-align: center;
+      font-size: 1.2rem;
     }
     .price {
       display: flex;
@@ -128,6 +160,46 @@ export default {
         }
         &.pre {
           text-decoration: line-through;
+        }
+      }
+    }
+    .addToCart {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      animation: all 0.3s ease-in-out;
+      cursor: pointer;
+      .text {
+        background-color: #fff;
+        padding: 5px 20px;
+        transform: translateX(100px);
+        opacity: 0;
+        position: relative;
+        z-index: 1;
+        font-size: 1.1rem;
+      }
+      i {
+        color: var(--main-color);
+        background-color: #fff;
+        padding: 5px 20px;
+        position: relative;
+        z-index: 2;
+        font-size: 1.1rem;
+      }
+      &.arabic {
+        right: unset;
+        left: 0;
+        .text {
+          transform: translateX(-100px);
+        }
+      }
+      &:hover {
+        .text {
+          transform: translateX(0px);
+          opacity: 1;
         }
       }
     }

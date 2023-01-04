@@ -12,6 +12,7 @@
             v-if="job.category"
             class="category"
             :style="{ backgroundColor: random_rgba() }"
+            @click="$router.push(`/career-category/${job.category.id}`)"
             >{{ job.category.name }}</span
           >
           <img
@@ -94,6 +95,7 @@ export default {
       right: 10px;
       padding: 0px 10px;
       border-radius: 5px;
+      cursor: pointer;
     }
     img {
       width: 100%;
