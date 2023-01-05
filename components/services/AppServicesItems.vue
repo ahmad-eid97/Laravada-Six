@@ -11,9 +11,12 @@
           nec
         </p>
       </div>
-      <div class="row pt-45" v-if="services.services.length >= 1">
+      <div
+        class="row pt-45 justify-content-center"
+        v-if="allServices.services.length >= 1"
+      >
         <div
-          v-for="service in services.services"
+          v-for="service in allServices.services"
           :key="service.id"
           class="col-lg-3 col-sm-6 col-md-4 mb-4"
           @click="$router.push(localePath(`/service/${service.id}`))"
@@ -35,15 +38,13 @@
       </div>
       <div class="col-lg-12 col-md-12 text-center">
         <div class="pagination-area">
-          <a href="#" class="page-numbers">
-            <i class="fa-solid fa-arrow-left"></i>
-          </a>
-          <span class="page-numbers current" aria-current="page">1</span>
-          <a href="#" class="page-numbers">2</a>
-          <a href="#" class="page-numbers">3</a>
-          <a href="#" class="page-numbers">
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
+          <b-pagination
+            v-model="allServices.meta.current_page"
+            :total-rows="allServices.meta.total"
+            :per-page="allServices.meta.per_page"
+            aria-controls="my-table"
+            @change="changePage"
+          ></b-pagination>
         </div>
       </div>
     </div>
@@ -53,10 +54,29 @@
 <script>
 export default {
   props: ["services"],
+  data() {
+    return {
+      allServices: this.services,
+    };
+  },
+  methods: {
+    async changePage(pageNum) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      const response = await this.$axios.get(`/services?page=${pageNum}`);
+      this.allServices = response.data.data;
+    },
+  },
 };
 </script>
 
 <style>
+.services-style-area .section-title {
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  text-align: center;
+}
+
 .services-style-area .section-title span {
   margin-bottom: 8px;
   font-weight: 600;

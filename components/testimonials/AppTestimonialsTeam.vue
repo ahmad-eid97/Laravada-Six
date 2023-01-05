@@ -19,7 +19,10 @@
             <div class="content">
               <h4>{{ member.name }}</h4>
               <h5>{{ member.job }}</h5>
-              <h6>{{ member.description }}</h6>
+              <h6>
+                {{ member.description.substring(0, 200) }}
+                {{ member.description.length > 200 ? "..." : "" }}
+              </h6>
               <h5>{{ member.phone }}</h5>
               <h5>{{ member.email }}</h5>
             </div>

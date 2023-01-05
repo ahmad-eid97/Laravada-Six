@@ -23,7 +23,7 @@ export default {
     });
 
     return {
-      coursesList: COURSES_LIST.data.data.courses,
+      coursesList: COURSES_LIST.data.data,
     };
   },
 };

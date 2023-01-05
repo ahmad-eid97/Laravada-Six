@@ -24,7 +24,7 @@ export default {
     });
 
     return {
-      eventsList: EVENTS_LIST.data.data.events,
+      eventsList: EVENTS_LIST.data.data,
     };
   },
 };

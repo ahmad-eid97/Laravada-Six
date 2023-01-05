@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
       <div
         class="col-md-6 col-xl-4"
-        v-for="course in coursesList"
+        v-for="course in allCourses.courses"
         :key="course"
       >
         <div class="course">
@@ -50,15 +50,13 @@
 
     <div class="col-lg-12 col-md-12 text-center">
       <div class="pagination-area">
-        <a href="#" class="page-numbers">
-          <i class="fa-solid fa-arrow-left"></i>
-        </a>
-        <span class="page-numbers current" aria-current="page">1</span>
-        <a href="#" class="page-numbers">2</a>
-        <a href="#" class="page-numbers">3</a>
-        <a href="#" class="page-numbers">
-          <i class="fa-solid fa-arrow-right"></i>
-        </a>
+        <b-pagination
+          v-model="allCourses.meta.current_page"
+          :total-rows="allCourses.meta.total"
+          :per-page="allCourses.meta.per_page"
+          aria-controls="my-table"
+          @change="changePage"
+        ></b-pagination>
       </div>
     </div>
   </div>
@@ -67,6 +65,11 @@
 <script>
 export default {
   props: ["coursesList"],
+  data() {
+    return {
+      allCourses: this.coursesList,
+    };
+  },
   methods: {
     addToCart(course) {
       const item = {
@@ -93,6 +96,11 @@ export default {
       this.$store.state.cartItems = cartItems;
       localStorage.setItem("laravadaCart", JSON.stringify(cartItems));
       this.$toast.success("You have been enrolled in this course successfully");
+    },
+    async changePage(pageNum) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      const response = await this.$axios.get(`/courses?page=${pageNum}`);
+      this.allCourses = response.data.data;
     },
   },
 };
@@ -166,7 +174,7 @@ output {
       }
       img {
         width: 100%;
-        height: 300px;
+        height: 250px;
         cursor: pointer;
         &:hover {
           filter: brightness(0.8);

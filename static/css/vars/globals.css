@@ -138,3 +138,38 @@ section {
 .slick-next {
   right: 0px !important;
 }
+
+/* PAGINATION STYLES FROM HERE */
+.pagination-area {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination-area ul li {
+  padding: 5px 3px !important;
+}
+
+.pagination-area ul li.active span,
+.pagination-area ul li.active button {
+  background-color: var(--main-color);
+  border-color: var(--main-color);
+}
+
+.pagination-area ul li.active:hover span,
+.pagination-area ul li.active:hover button {
+  color: #fff;
+}
+
+.pagination-area ul li:hover span,
+.pagination-area ul li:hover button {
+  color: var(--main-color);
+  border-color: var(--main-color);
+}
+
+.pagination-area ul li span,
+.pagination-area ul li button {
+  font-size: 1.3rem;
+  color: rgb(49, 49, 49);
+  padding: 5px 15px;
+  box-shadow: none !important;
+}

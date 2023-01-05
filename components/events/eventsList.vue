@@ -3,7 +3,7 @@
     <h5>Events</h5>
     <h1>Our Upcoming Events</h1>
     <div class="row">
-      <div class="col-lg-6 mb-4" v-for="event in eventsList" :key="event">
+      <div class="col-lg-6 mb-4" v-for="event in allEvents.events" :key="event">
         <div class="event">
           <div class="buy">
             <img :src="event.image" alt="eventImage" />
@@ -27,15 +27,13 @@
 
     <div class="col-lg-12 col-md-12 text-center">
       <div class="pagination-area">
-        <a href="#" class="page-numbers">
-          <i class="fa-solid fa-arrow-left"></i>
-        </a>
-        <span class="page-numbers current" aria-current="page">1</span>
-        <a href="#" class="page-numbers">2</a>
-        <a href="#" class="page-numbers">3</a>
-        <a href="#" class="page-numbers">
-          <i class="fa-solid fa-arrow-right"></i>
-        </a>
+        <b-pagination
+          v-model="allEvents.meta.current_page"
+          :total-rows="allEvents.meta.total"
+          :per-page="allEvents.meta.per_page"
+          aria-controls="my-table"
+          @change="changePage"
+        ></b-pagination>
       </div>
     </div>
   </div>
@@ -44,6 +42,18 @@
 <script>
 export default {
   props: ["eventsList"],
+  data() {
+    return {
+      allEvents: this.eventsList,
+    };
+  },
+  methods: {
+    async changePage(pageNum) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      const response = await this.$axios.get(`/events?page=${pageNum}`);
+      this.allEvents = response.data.data;
+    },
+  },
 };
 </script>
 
@@ -132,6 +142,7 @@ export default {
         text-align: unset;
         margin: unset;
         cursor: pointer;
+        margin-bottom: 10px;
       }
       p {
         margin: 0;

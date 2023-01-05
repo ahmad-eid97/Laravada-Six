@@ -80,9 +80,11 @@ export default {
 }
 .about-intro {
   background-color: #f8f8f8;
+  padding-bottom: 0 !important;
 }
 .about-intro .clients-slider-img {
   position: relative;
+  /* margin-top: 100px; */
 }
 .about-intro .clients-slider-img img {
   position: relative;

@@ -36,7 +36,7 @@ export default {
 
     return {
       careerCategories: careerCategories.data.data.categories,
-      jobsList: jobsList.data.data.jobs,
+      jobsList: jobsList.data.data,
     };
   },
 };

@@ -5,17 +5,30 @@
         <span class="sp-color2">Latest Blog</span>
         <h2>Let’s Check Some Latest Blog</h2>
       </div>
-      <div class="row pt-45" v-if="blogs.blogs.length">
+      <div
+        class="row pt-45 justify-content-center"
+        v-if="allBlogs.blogs.length >= 1"
+      >
         <div
-          v-for="blog in blogs.blogs"
+          v-for="blog in allBlogs.blogs"
           :key="blog.id"
-          class="col-lg-4 col-md-6"
+          class="col-lg-4 col-md-6 mb-4"
           @click="$router.push(localePath(`/blog/${blog.id}`))"
         >
           <div class="blog-card">
             <div class="blog-img">
               <router-link to="blog">
-                <img :src="blog.image" alt="Blog Images" />
+                <img
+                  v-if="!blog.image"
+                  src="/assets/images/noImage.png"
+                  alt="Blog Image"
+                />
+                <img
+                  v-if="blog.image"
+                  :src="blog.image"
+                  alt="Blog Image"
+                  @error="setAltImg"
+                />
               </router-link>
               <div class="blog-tag">
                 <h3>{{ $date(new Date(blog.publish_date), "dd") }}</h3>
@@ -29,8 +42,7 @@
               <ul>
                 <li>
                   <a href="#"
-                    ><i class="fa-regular fa-user"></i> By
-                    {{ blog.username }}</a
+                    ><i class="fa-regular fa-user"></i>By {{ blog.username }}</a
                   >
                 </li>
                 <li>
@@ -45,15 +57,13 @@
         </div>
         <div class="col-lg-12 col-md-12 text-center">
           <div class="pagination-area">
-            <a href="#" class="page-numbers">
-              <i class="fa-solid fa-arrow-left"></i>
-            </a>
-            <span class="page-numbers current" aria-current="page">1</span>
-            <a href="#" class="page-numbers">2</a>
-            <a href="#" class="page-numbers">3</a>
-            <a href="#" class="page-numbers">
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
+            <b-pagination
+              v-model="allBlogs.meta.current_page"
+              :total-rows="allBlogs.meta.total"
+              :per-page="allBlogs.meta.per_page"
+              aria-controls="my-table"
+              @change="changePage"
+            ></b-pagination>
           </div>
         </div>
       </div>
@@ -65,6 +75,21 @@
 export default {
   name: "AppBlogsItems",
   props: ["blogs"],
+  data() {
+    return {
+      allBlogs: this.blogs,
+    };
+  },
+  methods: {
+    setAltImg(event) {
+      event.target.src = "/assets/images/noImage.png";
+    },
+    async changePage(pageNum) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      const response = await this.$axios.get(`/blogs?page=${pageNum}`);
+      this.allBlogs = response.data.data;
+    },
+  },
 };
 </script>
 
@@ -104,6 +129,7 @@ export default {
   transition: 0.9s;
   border: 1px solid #f1f1f1;
   transform: translateY(0px);
+  height: 100%;
 }
 .blog-card:hover {
   transform: translateY(-15px);

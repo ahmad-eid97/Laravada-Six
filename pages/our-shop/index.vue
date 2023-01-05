@@ -33,7 +33,7 @@ export default {
     });
 
     return {
-      productsList: PRODUCTS_LIST.data.data.products,
+      productsList: PRODUCTS_LIST.data.data,
       productsCategories: PRODUCTS_CATEGORIES.data.data.categories,
     };
   },

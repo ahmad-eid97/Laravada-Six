@@ -5,7 +5,7 @@
 
     <div class="row justify-content-center">
       <div
-        v-for="product in productsList"
+        v-for="product in allProducts.products"
         :key="product"
         class="col-md-6 col-lg-4 col-xl-3 mb-4"
       >
@@ -40,15 +40,13 @@
 
       <div class="col-lg-12 col-md-12 text-center">
         <div class="pagination-area">
-          <a href="#" class="page-numbers">
-            <i class="fa-solid fa-arrow-left"></i>
-          </a>
-          <span class="page-numbers current" aria-current="page">1</span>
-          <a href="#" class="page-numbers">2</a>
-          <a href="#" class="page-numbers">3</a>
-          <a href="#" class="page-numbers">
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
+          <b-pagination
+            v-model="allProducts.meta.current_page"
+            :total-rows="allProducts.meta.total"
+            :per-page="allProducts.meta.per_page"
+            aria-controls="my-table"
+            @change="changePage"
+          ></b-pagination>
         </div>
       </div>
     </div>
@@ -59,7 +57,9 @@
 export default {
   props: ["productsList"],
   data() {
-    return {};
+    return {
+      allProducts: this.productsList,
+    };
   },
   methods: {
     random_rgba() {
@@ -101,6 +101,11 @@ export default {
       this.$store.state.cartItems = cartItems;
       localStorage.setItem("laravadaCart", JSON.stringify(cartItems));
       this.$toast.success("Product added to cart successfully");
+    },
+    async changePage(pageNum) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      const response = await this.$axios.get(`/products?page=${pageNum}`);
+      this.allProducts = response.data.data;
     },
   },
 };

@@ -5,7 +5,7 @@
 
     <div class="row justify-content-center">
       <div
-        v-for="job in jobsList"
+        v-for="job in allJobs.jobs"
         :key="job"
         class="col-md-6 col-lg-4 col-xl-3 mb-4"
       >
@@ -39,15 +39,13 @@
 
       <div class="col-lg-12 col-md-12 text-center">
         <div class="pagination-area">
-          <a href="#" class="page-numbers">
-            <i class="fa-solid fa-arrow-left"></i>
-          </a>
-          <span class="page-numbers current" aria-current="page">1</span>
-          <a href="#" class="page-numbers">2</a>
-          <a href="#" class="page-numbers">3</a>
-          <a href="#" class="page-numbers">
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
+          <b-pagination
+            v-model="allJobs.meta.current_page"
+            :total-rows="allJobs.meta.total"
+            :per-page="allJobs.meta.per_page"
+            aria-controls="my-table"
+            @change="changePage"
+          ></b-pagination>
         </div>
       </div>
     </div>
@@ -58,7 +56,9 @@
 export default {
   props: ["jobsList"],
   data() {
-    return {};
+    return {
+      allJobs: this.jobsList,
+    };
   },
   methods: {
     random_rgba() {
@@ -76,6 +76,11 @@ export default {
         "0.2" +
         ")"
       );
+    },
+    async changePage(pageNum) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      const response = await this.$axios.get(`/jobs?page=${pageNum}`);
+      this.allJobs = response.data.data;
     },
   },
 };
@@ -111,7 +116,7 @@ export default {
     }
     img {
       width: 100%;
-      height: 150px;
+      height: 130px;
       object-fit: contain;
       margin-bottom: 10px;
       cursor: pointer;
@@ -119,8 +124,8 @@ export default {
     h3 {
       cursor: pointer;
       text-align: center;
-      font-size: 1.3rem;
-      margin: 10px 0 20px;
+      font-size: 20px;
+      margin: 10px 0;
     }
     .tags {
       display: flex;
