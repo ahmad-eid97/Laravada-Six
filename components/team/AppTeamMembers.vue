@@ -5,7 +5,10 @@
         <span class="sp-color2">Our Team</span>
         <h2>Our Team Members</h2>
       </div>
-      <div class="row pt-45" v-if="team.teams.length >= 1">
+      <div
+        class="row pt-45 justify-content-center"
+        v-if="team.teams.length >= 1"
+      >
         <div
           v-for="member in team.teams"
           :key="member.id"
@@ -19,7 +22,10 @@
             <div class="content">
               <h4>{{ member.name }}</h4>
               <h5>{{ member.job }}</h5>
-              <h6>{{ member.description }}</h6>
+              <h6>
+                {{ member.description.substring(0, 200) }}
+                {{ member.description.length > 200 ? "..." : "" }}
+              </h6>
               <h5>{{ member.phone }}</h5>
               <h5>{{ member.email }}</h5>
             </div>
@@ -68,16 +74,16 @@ export default {
 }
 .projects-col {
   text-align: center;
-  margin-bottom: 40px;
+  height: 100%;
 }
 .projects-col .card {
   text-align: center;
-  margin-bottom: 40px;
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
   border-radius: 12px;
   cursor: pointer;
   transform: translateY(0px);
+  height: 100%;
 }
 
 .projects-col .card:hover {

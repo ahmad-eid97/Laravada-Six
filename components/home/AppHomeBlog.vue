@@ -36,7 +36,7 @@
         data-aos-easing="ease-in-out-quart"
         data-aos-duration="1000"
       >
-        <nuxt-link to="/blogs" class="btn">Read More Case Studies</nuxt-link>
+        <nuxt-link to="/blogs" class="btn">SEE ALL BLOGS</nuxt-link>
       </div>
     </div>
   </section>
@@ -84,7 +84,7 @@ export default {
   position: relative;
 }
 .blogs .image img {
-  height: 300px;
+  height: 250px;
   width: 100%;
 }
 .blogs .image .rollover {
@@ -122,7 +122,7 @@ export default {
 }
 
 .blogs .content h2 {
-  font-size: 32px;
+  font-size: 22px;
   font-weight: 500;
   letter-spacing: -0.768px;
   line-height: 41.6px;

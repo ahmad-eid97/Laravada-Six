@@ -59,7 +59,7 @@ export default {
   list-style-type: none;
   margin-left: -5px;
   margin-right: -5px;
-  margin-top: 10px;
+  margin-top: -10px;
   margin-bottom: 25px;
 }
 .side-bar-widget .blog-gallery li {
@@ -76,6 +76,7 @@ export default {
   display: grid;
   place-content: center;
   position: relative;
+  width: 100%;
 }
 .side-bar-widget .blog-gallery li a::before {
   content: "";
@@ -91,9 +92,9 @@ export default {
 }
 .side-bar-widget .blog-gallery li a img {
   width: 100px;
-  height: 100px;
+  height: 80px;
   border-radius: 30px 8px;
-  object-fit: contain;
+  object-fit: cover;
 }
 .side-bar-widget .blog-gallery li a i {
   position: absolute;

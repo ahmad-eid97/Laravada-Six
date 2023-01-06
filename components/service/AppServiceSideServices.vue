@@ -1,9 +1,12 @@
 <template>
-  <div class="side-bar-widget" v-if="serviceDetails.features.length >= 1">
-    <h3 class="title">Our Services</h3>
-    <div class="side-bar-categories">
+  <div class="side-bar-widget">
+    <h3 class="title">Our Features</h3>
+    <div class="side-bar-categories" v-if="serviceDetails.features">
       <ul>
-        <li v-for="feature in serviceDetails.features" :key="feature">
+        <li
+          v-for="feature in serviceDetails.features[0].split('\r\n')"
+          :key="feature"
+        >
           <i class="fa-solid fa-circle-dot"></i>
           <a href="#" target="_blank">{{ feature }}</a>
         </li>

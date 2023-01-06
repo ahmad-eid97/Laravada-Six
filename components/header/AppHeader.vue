@@ -42,10 +42,6 @@
           >
         </b-navbar-nav>
       </b-collapse>
-      <a href="#" class="phone">
-        <i class="fa-solid fa-phone"></i>
-        +11111111111
-      </a>
       <a to="contact" class="btn"> Free Qoute </a>
       <div class="d-flex align-items-center">
         <lang-switch></lang-switch>
@@ -341,7 +337,7 @@ header .phone i {
 }
 header .btn {
   padding: 17px 40px;
-  margin: 20px;
+  margin: 0 20px;
   color: rgb(248, 96, 17);
   background-color: #ffefe6;
   font-size: 18px;
