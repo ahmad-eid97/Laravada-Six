@@ -259,7 +259,7 @@ header {
   margin: 0 0 0 24px;
 }
 .navbar-brand img {
-  max-width: 230px;
+  max-width: 160px;
 }
 .nav-item {
   position: relative;

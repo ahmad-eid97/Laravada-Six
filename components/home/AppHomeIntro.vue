@@ -7,7 +7,7 @@
           Online marketing to secure customer retention, leads, and sales. We
           focus on the bigger picture.
         </p>
-        <a href="#" class="btn">
+        <a href="/services" class="btn">
           Our Services
           <i class="fa-solid fa-arrow-right"></i>
         </a>
