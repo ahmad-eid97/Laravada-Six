@@ -23,23 +23,32 @@
         is-nav
       >
         <b-navbar-nav class="align-items-center">
-          <b-nav-item :to="localePath('/')">Home</b-nav-item>
-          <b-nav-item :to="localePath('/services')">Services</b-nav-item>
-          <b-nav-item :to="localePath('/team')">Why Us</b-nav-item>
-          <b-nav-item :to="localePath('/testimonials')"
-            >Case Studies</b-nav-item
-          >
-          <b-nav-item :to="localePath('/about')">About</b-nav-item>
-          <b-nav-item :to="localePath('/blogs')">Blogs</b-nav-item>
-          <b-nav-item :to="localePath('/careers')">Career</b-nav-item>
-          <b-nav-item :to="localePath('/events')">Events</b-nav-item>
           <b-nav-item
-            :to="localePath('/login')"
-            v-if="$store.state.user"
-            @click="logout"
-            class="outLarge"
-            >Logout</b-nav-item
+            active-class="active"
+            :to="localePath(`/${item.link}`)"
+            exact
+            v-for="item in $store.state.topMenu"
+            :key="item.id"
           >
+            <span v-if="!item.child.length">{{ item.label }}</span>
+
+            <b-dropdown
+              :text="item.label"
+              block
+              class="m-2 dropdownBtn"
+              v-if="item.child.length"
+            >
+              <b-dropdown-item
+                v-for="child in item.child"
+                :key="child.id"
+                :to="localePath('/' + child.link)"
+                >{{ child.label }}</b-dropdown-item
+              >
+            </b-dropdown>
+          </b-nav-item>
+          <b-nav-item v-if="$store.state.user" @click="logout" class="outLarge">
+            Logout
+          </b-nav-item>
         </b-navbar-nav>
       </b-collapse>
       <a to="contact" class="btn"> Free Qoute </a>
@@ -460,6 +469,30 @@ header .btn:hover {
 @include md {
   .btn {
     display: none;
+  }
+}
+.dropdownBtn {
+  margin: 0 !important;
+  button {
+    background: none !important;
+    padding: 0 !important;
+    text-transform: none !important;
+    font-size: 1.1rem !important;
+    font-family: unset !important;
+    font-weight: 500 !important;
+    box-shadow: none !important;
+    border: none !important;
+    min-width: 60px !important;
+    position: relative;
+    top: -3px;
+    margin: 0 !important;
+    color: #000;
+    &:hover {
+      color: var(--main-color);
+    }
+  }
+  .dropdown-menu {
+    top: 40px !important;
   }
 }
 </style>

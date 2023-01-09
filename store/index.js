@@ -3,6 +3,7 @@ import Vuex from "vuex";
 export default () => {
   return new Vuex.Store({
     state: {
+      topMenu: [],
       user: null,
       websiteSettings: [],
       footerData: {},
@@ -11,6 +12,9 @@ export default () => {
     },
     getters: {},
     mutations: {
+      getTopMenu(state, data) {
+        state.topMenu = data;
+      },
       setUserData(state, data) {
         state.user = data;
       },
@@ -33,6 +37,9 @@ export default () => {
           commit("getFooterData", FOOTER_DATA.data.data);
 
           const USER_DATA = await this.$cookies.get("cms-user");
+
+          const TOP_MENU = await this.$axios.get("/menus");
+          commit("getTopMenu", TOP_MENU.data.data);
 
           commit("setUserData", USER_DATA);
         }
