@@ -51,7 +51,7 @@
           </b-nav-item>
         </b-navbar-nav>
       </b-collapse>
-      <a to="contact" class="btn"> Free Qoute </a>
+      <a to="contact" class="btn startBtn"> Get Quotation </a>
       <div class="d-flex align-items-center">
         <lang-switch></lang-switch>
         <div class="m-0 cartIcon" @click="openCart = !openCart">
@@ -467,7 +467,7 @@ header .btn:hover {
   }
 }
 @include md {
-  .btn {
+  .startBtn {
     display: none;
   }
 }
@@ -482,7 +482,9 @@ header .btn:hover {
     font-weight: 500 !important;
     box-shadow: none !important;
     border: none !important;
-    min-width: 60px !important;
+    min-width: unset !important;
+    width: 100%;
+    min-height: 30px;
     position: relative;
     top: -3px;
     margin: 0 !important;

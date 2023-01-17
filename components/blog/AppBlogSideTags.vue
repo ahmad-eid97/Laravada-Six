@@ -3,7 +3,7 @@
     <h3 class="title">Tag Cloud</h3>
     <ul class="side-bar-widget-tag">
       <li v-for="tag in blogDetails.tags" :key="tag">
-        <a href="#" target="_blank">{{ tag }}</a>
+        <a href="#" target="_blank">{{ tag.name }}</a>
       </li>
     </ul>
   </div>

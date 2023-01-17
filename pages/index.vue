@@ -7,6 +7,8 @@
     <app-home-brands :partners="partners"></app-home-brands>
     <app-home-bars></app-home-bars>
     <app-home-organisations></app-home-organisations>
+    <app-home-activities :activities="activities" />
+    <app-home-steps :steps="steps" />
     <app-home-bost></app-home-bost>
     <app-home-team></app-home-team>
     <app-home-blog :blogs="blogs"></app-home-blog>
@@ -24,21 +26,23 @@
 </template>
 
 <script>
-import AppHomeBottom from '../components/home/AppHomeBottom.vue'
-import AppHomeBars from '../components/home/AppHomeBars.vue'
-import AppHomeBlog from '../components/home/AppHomeBlog.vue'
-import AppHomeBost from '../components/home/AppHomeBost.vue'
-import AppHomeBrands from '../components/home/AppHomeBrands.vue'
-import AppHomeGrowth from '../components/home/AppHomeGrowth.vue'
+import AppHomeBottom from "../components/home/AppHomeBottom.vue";
+import AppHomeBars from "../components/home/AppHomeBars.vue";
+import AppHomeBlog from "../components/home/AppHomeBlog.vue";
+import AppHomeBost from "../components/home/AppHomeBost.vue";
+import AppHomeBrands from "../components/home/AppHomeBrands.vue";
+import AppHomeGrowth from "../components/home/AppHomeGrowth.vue";
 // import AppHomeBanner from '../components/home/AppHomeBanner.vue'
 // import AppHomeBottomBanner from '../components/home/AppHomeBottomBanner.vue'
 // import AppHomeCount from '../components/home/AppHomeCount.vue'
 // import AppHomeFeatures from '../components/home/AppHomeFeatures.vue'
-import AppHomeIntro from '../components/home/AppHomeIntro.vue'
-import AppHomeInvestors from '../components/home/AppHomeInvestors.vue'
-import AppHomeOrganisations from '../components/home/AppHomeOrganisations.vue'
-import AppHomeSocial from '../components/home/AppHomeSocial.vue'
-import AppHomeTeam from '../components/home/AppHomeTeam.vue'
+import AppHomeIntro from "../components/home/AppHomeIntro.vue";
+import AppHomeInvestors from "../components/home/AppHomeInvestors.vue";
+import AppHomeOrganisations from "../components/home/AppHomeOrganisations.vue";
+import AppHomeSocial from "../components/home/AppHomeSocial.vue";
+import AppHomeTeam from "../components/home/AppHomeTeam.vue";
+import AppHomeActivities from "../components/home/AppHomeActivities.vue";
+import AppHomeSteps from "../components/home/AppHomeSteps.vue";
 // import AppHomeNews from '../components/home/AppHomeNews.vue'
 // import AppHomePartners from '../components/home/AppHomePartners.vue'
 // import AppHomeTestominials from '../components/home/AppHomeTestominials.vue'
@@ -46,16 +50,30 @@ import AppHomeTeam from '../components/home/AppHomeTeam.vue'
 // import AppHomeWork from '../components/home/AppHomeWork.vue'
 
 export default {
-  name: 'Home',
-  async asyncData({ $axios }) {
-    const partners = await $axios.get('/partners');
+  name: "Home",
+  async asyncData({ $axios, app }) {
+    const partners = await $axios.get("/partners");
 
-    const blogs = await $axios.get('/blogs?latest=1');
+    const blogs = await $axios.get("/blogs?latest=1");
+
+    const activities = await $axios.get("/sections/activities", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
+
+    const steps = await $axios.get("/sections/steps", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
 
     return {
       partners: partners.data.data.partners,
-      blogs: blogs.data.data.blogs
-    }
+      blogs: blogs.data.data.blogs,
+      activities: activities.data.data,
+      steps: steps.data.data,
+    };
   },
   components: {
     AppHomeIntro,
@@ -68,7 +86,9 @@ export default {
     AppHomeBost,
     AppHomeTeam,
     AppHomeBlog,
-    AppHomeBottom
+    AppHomeBottom,
+    AppHomeActivities,
+    AppHomeSteps,
     // AppHomeBanner,
     // AppHomeFeatures,
     // AppHomeCount,
@@ -78,9 +98,7 @@ export default {
     // AppHomeNews,
     // AppHomePartners,
     // AppHomeBottomBanner
-  }
-}
+  },
+};
 </script>
-<style>
-  
-</style>
+<style></style>

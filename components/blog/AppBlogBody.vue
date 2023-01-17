@@ -26,41 +26,6 @@
     </div>
     <div class="article-content">
       <p>{{ blogDetails.description }}</p>
-      <!-- <p>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. cu
-            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies ne,
-            pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet n,
-            vu eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis
-            pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aen
-            li, porttitor eu, consequat vitae, eleifend ac, enim.
-            </p>
-            <p>
-            Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum.
-            gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, Proin gravida nibh vel velit nisi
-            elit consequat ipsum.Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi
-            elit consequat ipsum. Proin gravida nibh vel velit.
-            </p>
-            <blockquote class="blockquote">
-                <p>
-                Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, Proin gravida nibh vel velit nisi elit.
-                </p>
-                <span>- Albedin Simanth</span>
-                <div class="icon">
-                    <i icon="fa-solid fa-quote-left" />
-                </div>
-            </blockquote>
-            <p>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. cu
-            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies ne,
-            pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet n,
-            vu eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis
-            pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aen
-            li, porttitor eu, consequat vitae, eleifend ac, enim.
-            </p>
-            <p>
-            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here',
-            making it look like readable English.
-            </p> -->
     </div>
     <div class="blog-article-share">
       <div class="row align-items-center">
@@ -69,7 +34,7 @@
             <ul v-if="blogDetails.tags.length >= 1">
               <li><i class="bx bx-purchase-tag-alt"></i> Tags:</li>
               <li v-for="tag in blogDetails.tags.slice(0, 5)" :key="tag">
-                <a href="#">{{ tag }}</a>
+                <a href="#">{{ tag.name }}</a>
               </li>
             </ul>
           </div>
