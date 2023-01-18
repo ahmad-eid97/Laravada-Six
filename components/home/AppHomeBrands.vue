@@ -6,7 +6,7 @@
     >
       <div class="col-12">
         <div class="heading">
-          <h2>Some Brands We Work With</h2>
+          <h2>Our Partners</h2>
           <p>Quisque aliquet, libero consequat elementum convallis.</p>
         </div>
       </div>
@@ -16,6 +16,7 @@
         class="col-sm-3 col-md-2 brand"
       >
         <img :src="brand.image" :alt="brand.title" />
+        <h5>{{ brand.title }}</h5>
       </div>
     </div>
   </section>
