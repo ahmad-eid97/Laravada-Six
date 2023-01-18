@@ -1,18 +1,25 @@
 <template>
   <section class="intro">
-    <div class="row m-0 align-items-center">
-      <div class="col-lg-7">
-        <h1>Unlock Your Online Growth Potential</h1>
-        <p>
-          Online marketing to secure customer retention, leads, and sales. We
-          focus on the bigger picture.
-        </p>
-        <a href="/services" class="btn">
-          Our Services
-          <i class="fa-solid fa-arrow-right"></i>
-        </a>
-      </div>
-      <div class="col-lg-5">
+    <VueSlickCarousel :arrows="true" :fade="true" :dots="false">
+      <div
+        class="row m-0 align-items-center wrapper"
+        v-for="slide in slides"
+        :key="slide.id"
+        :style="{ backgroundImage: `url(${slide.background})` }"
+      >
+        <div class="layer"></div>
+        <div class="col-lg-7 insideWrapper">
+          <h1>
+            {{ slide.title }}
+          </h1>
+          <p>
+            {{ slide.description }}
+          </p>
+          <a :href="slide.link" class="btn"
+            ><i class="fa-brands fa-mixcloud mx-2"></i> Explore solutions</a
+          >
+        </div>
+        <!-- <div class="col-lg-5">
         <div class="form text-center">
           <span>
             <img
@@ -32,15 +39,24 @@
           <a href="#" class="btn">Get A Callback</a>
           <small>By submitting my data I agree to be contacted</small>
         </div>
+      </div> -->
       </div>
-    </div>
+    </VueSlickCarousel>
   </section>
 </template>
 
 <script>
+import VueSlickCarousel from "vue-slick-carousel";
+import "vue-slick-carousel/dist/vue-slick-carousel.css";
+import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
+import "animate.css/animate.css";
 import "animate.css/animate.min.css";
 export default {
   name: "AppHomeIntro",
+  props: ["slides"],
+  components: {
+    VueSlickCarousel,
+  },
   data() {
     return {};
   },
@@ -49,16 +65,37 @@ export default {
 <style lang="scss">
 .intro {
   background-color: rgba(255, 255, 255, 0);
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
       rgba(0, 0, 0, 0.24) 93%,
       rgb(255, 255, 255) 93%
     ),
-    url("https://avada.theme-fusion.com/marketing-consultant/wp-content/uploads/sites/142/2020/06/marketing-intro.jpg");
+    url("https://avada.theme-fusion.com/marketing-consultant/wp-content/uploads/sites/142/2020/06/marketing-intro.jpg"); */
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 80px 32px 0;
+  /* padding: 80px 32px 50px; */
+  padding: 0px;
   background-attachment: fixed;
+  position: relative;
+
+  .layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+}
+.wrapper {
+  padding: 50px;
+  height: 100%;
+  min-height: 500px;
+}
+.insideWrapper {
+  position: relative !important;
+  z-index: 3 !important;
 }
 .intro h1 {
   font-weight: 500;
@@ -69,6 +106,8 @@ export default {
   line-height: 80px;
   text-align: start;
   margin: 12px 0 24px;
+  position: relative !important;
+  z-index: 3 !important;
 }
 
 @include xs {
@@ -86,6 +125,8 @@ export default {
   color: #fff;
   font-weight: 400;
   margin-bottom: 20px;
+  position: relative !important;
+  z-index: 3 !important;
 }
 
 @include xs {
@@ -206,5 +247,11 @@ export default {
   font-size: 13px;
   font-weight: 400;
   line-height: 24px;
+}
+.slick-prev {
+  left: 0;
+}
+.slick-next {
+  right: 20px !important;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <app-home-intro></app-home-intro>
+    <app-home-intro :slides="slides"></app-home-intro>
     <app-home-growth></app-home-growth>
     <app-home-investors></app-home-investors>
     <app-home-social></app-home-social>
@@ -52,6 +52,12 @@ import AppHomeSteps from "../components/home/AppHomeSteps.vue";
 export default {
   name: "Home",
   async asyncData({ $axios, app }) {
+    const slides = await $axios.get("/sliders", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
+
     const partners = await $axios.get("/partners");
 
     const blogs = await $axios.get("/blogs?latest=1");
@@ -69,6 +75,7 @@ export default {
     });
 
     return {
+      slides: slides.data.data.sliders,
       partners: partners.data.data.partners,
       blogs: blogs.data.data.blogs,
       activities: activities.data.data,
