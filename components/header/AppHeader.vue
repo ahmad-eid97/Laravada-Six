@@ -274,6 +274,11 @@ header {
   position: relative;
   margin: 0 12px;
 }
+.nav-item {
+  & > .dropdown {
+    display: none;
+  }
+}
 .logo {
   img {
     @include sm {
