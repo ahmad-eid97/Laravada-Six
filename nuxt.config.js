@@ -41,6 +41,7 @@ export default {
     "~plugins/date-fns.js",
     "~plugins/vueToastify.js",
     "~plugins/sweetAlert.js",
+    "~plugins/socialChat.js",
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

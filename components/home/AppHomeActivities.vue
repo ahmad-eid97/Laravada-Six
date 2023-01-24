@@ -85,13 +85,154 @@ export default {
       },
     };
   },
+  mounted() {
+    document
+      .querySelector(".activities")
+      .style.setProperty(
+        "--acttivities-bg",
+        this.activities.find(
+          (one) => one.key === "activities_background_active_section"
+        ).value === "color"
+          ? this.activities.find(
+              (one) => one.key === "activities_background_color_section"
+            ).value
+          : `url(${
+              this.activities.find(
+                (one) => one.key === "activities_background_image_section"
+              ).value
+            })`
+      );
+
+    document
+      .querySelector(".activities")
+      .style.setProperty(
+        "--acttivities-fontSize",
+        `${
+          this.activities.find(
+            (one) => one.key === "activities_font_size_section"
+          ).value
+        }px`
+      );
+
+    if (
+      this.activities.find(
+        (one) => one.key === "activities_border_position_section"
+      ) &&
+      this.activities.find(
+        (one) => one.key === "activities_border_position_section"
+      ).value === "both"
+    ) {
+      document
+        .querySelector(".activities")
+        .style.setProperty(
+          "--acttivities-border-top",
+          `${
+            this.activities.find(
+              (one) => one.key === "activities_border_size_section"
+            ).value
+          }px ${
+            this.activities.find(
+              (one) => one.key === "activities_border_type_section"
+            ).value
+          } ${
+            this.activities.find(
+              (one) => one.key === "activities_border_color_section"
+            ).value
+          }`
+        );
+
+      document
+        .querySelector(".activities")
+        .style.setProperty(
+          "--acttivities-border-bottom",
+          `${
+            this.activities.find(
+              (one) => one.key === "activities_border_size_section"
+            ).value
+          }px ${
+            this.activities.find(
+              (one) => one.key === "activities_border_type_section"
+            ).value
+          } ${
+            this.activities.find(
+              (one) => one.key === "activities_border_color_section"
+            ).value
+          }`
+        );
+    } else if (
+      this.activities.find(
+        (one) => one.key === "activities_border_position_section"
+      ) &&
+      this.activities.find(
+        (one) => one.key === "activities_border_position_section"
+      ).value === "top"
+    ) {
+      document
+        .querySelector(".activities")
+        .style.setProperty(
+          "--acttivities-border-top",
+          `${
+            this.activities.find(
+              (one) => one.key === "activities_border_size_section"
+            ).value
+          }px ${
+            this.activities.find(
+              (one) => one.key === "activities_border_type_section"
+            ).value
+          } ${
+            this.activities.find(
+              (one) => one.key === "activities_border_color_section"
+            ).value
+          }`
+        );
+    } else if (
+      this.activities.find(
+        (one) => one.key === "activities_border_position_section"
+      ) &&
+      this.activities.find(
+        (one) => one.key === "activities_border_position_section"
+      ).value === "top"
+    ) {
+      document
+        .querySelector(".activities")
+        .style.setProperty(
+          "--acttivities-border-bottom",
+          `${
+            this.activities.find(
+              (one) => one.key === "activities_border_size_section"
+            ).value
+          }px ${
+            this.activities.find(
+              (one) => one.key === "activities_border_type_section"
+            ).value
+          } ${
+            this.activities.find(
+              (one) => one.key === "activities_border_color_section"
+            ).value
+          }`
+        );
+    }
+  },
 };
 </script>
 <style lang="scss">
 .activities {
   padding: 50px 0;
   margin-top: 42px;
-  margin-bottom: 20px;
+
+  --acttivities-bg: #fff;
+  --acttivities-fontSize: 20px;
+  --acttivities-border-top: 0px solid #fff;
+  --acttivities-border-bottom: 0px solid #fff;
+
+  background: var(--acttivities-bg);
+  border-top: var(--acttivities-border-top);
+  border-bottom: var(--acttivities-border-bottom);
+  background-repeat: no-repeat;
+  background-size: cover;
+  h2 {
+    font-size: var(--acttivities-fontSize);
+  }
 }
 .activities .intro-text {
   padding: 20px !important;
