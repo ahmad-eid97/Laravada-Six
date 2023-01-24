@@ -123,7 +123,7 @@ export default {
     } else if (
       this.steps.find((one) => one.key === "steps_border_position_section") &&
       this.steps.find((one) => one.key === "steps_border_position_section")
-        .value === "top"
+        .value === "bottom"
     ) {
       document
         .querySelector(".steps")

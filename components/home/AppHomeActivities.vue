@@ -191,7 +191,7 @@ export default {
       ) &&
       this.activities.find(
         (one) => one.key === "activities_border_position_section"
-      ).value === "top"
+      ).value === "bottom"
     ) {
       document
         .querySelector(".activities")
