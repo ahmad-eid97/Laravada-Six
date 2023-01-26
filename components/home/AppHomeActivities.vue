@@ -218,7 +218,7 @@ export default {
 <style lang="scss">
 .activities {
   padding: 50px 0;
-  margin-top: 42px;
+  margin-top: 0px;
 
   --acttivities-bg: #fff;
   --acttivities-fontSize: 20px;

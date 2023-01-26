@@ -49,6 +49,24 @@ export default {
     this.$store.state.cartItems = localStorage.getItem("laravadaCart")
       ? JSON.parse(localStorage.getItem("laravadaCart"))
       : [];
+
+    document
+      .querySelector(":root")
+      .style.setProperty(
+        "--main-color",
+        this.$store.state.websiteSettings.find(
+          (one) => one.key === "primary_color"
+        ).plain_value
+      );
+
+    // document
+    //   .querySelector(":root")
+    //   .style.setProperty(
+    //     "--secondary-color",
+    //     this.$store.state.websiteSettings.find(
+    //       (one) => one.key === "secondary_color"
+    //     ).plain_value
+    //   );
   },
 };
 </script>

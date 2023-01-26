@@ -99,10 +99,8 @@ export default {
           }`
         );
     } else if (
-      this.features.find(
-        (one) => one.key === "steps_border_position_section"
-      ) &&
-      this.features.find((one) => one.key === "steps_border_position_section")
+      this.steps.find((one) => one.key === "steps_border_position_section") &&
+      this.steps.find((one) => one.key === "steps_border_position_section")
         .value === "top"
     ) {
       document

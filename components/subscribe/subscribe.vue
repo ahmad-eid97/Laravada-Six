@@ -54,7 +54,7 @@ export default {
 .subscribe {
   background: var(--main-color);
   padding: 20px 10px;
-  margin-top: 50px;
+  margin-top: 0px;
   .wrapper {
     display: flex;
     justify-content: space-between;
