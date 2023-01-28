@@ -7,6 +7,8 @@ export default () => {
       user: null,
       websiteSettings: [],
       footerData: {},
+      socialLinks: [],
+      footerPages: [],
       cartItems: [],
       showLoader: false,
     },
@@ -24,6 +26,12 @@ export default () => {
       getFooterData(state, data) {
         state.footerData = data;
       },
+      getFooterSocialData(state, data) {
+        state.socialLinks = data;
+      },
+      getFooterPages(state, data) {
+        state.footerPages = data;
+      },
     },
     actions: {
       async nuxtServerInit({ commit }, { req, redirect }) {
@@ -37,11 +45,18 @@ export default () => {
           commit("getFooterData", FOOTER_DATA.data.data);
 
           const USER_DATA = await this.$cookies.get("cms-user");
+          commit("setUserData", USER_DATA);
 
           const TOP_MENU = await this.$axios.get("/menus");
           commit("getTopMenu", TOP_MENU.data.data);
 
-          commit("setUserData", USER_DATA);
+          const SOCIAL_LINKS = await this.$axios.get(
+            "/setting/all/social_media"
+          );
+          commit("getFooterSocialData", SOCIAL_LINKS.data.data);
+
+          const PAGES = await this.$axios.get("/pages");
+          commit("getFooterPages", PAGES.data.data.pages);
         }
       },
     },

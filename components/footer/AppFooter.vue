@@ -6,14 +6,20 @@
         <div class="col-sm-6 col-md-3 text-start">
           <div class="logo">
             <img
-              src="/assets/images/logo.png"
+              :src="
+                $store.state.websiteSettings.find((one) => one.key === 'logo')
+                  .plain_value
+              "
               alt="logoImage"
               style="width: 200px"
             />
           </div>
           <p>
-            Grow Your Online Business Strategically, and Improve Customer
-            Retention.
+            {{
+              $store.state.websiteSettings.find(
+                (one) => one.key === "description"
+              ).plain_value
+            }}
           </p>
           <div class="col-auto socials">
             <a
@@ -49,61 +55,59 @@
           </div>
         </div>
         <div class="col-sm-6 col-md-3 text-start">
-          <h5>Services</h5>
+          <h5>usefull links</h5>
           <ul>
             <li>
-              <a href="#">Marketing Plan</a>
+              <a href="#">Contact us</a>
             </li>
             <li>
-              <a href="#">Marketing Plan</a>
+              <a href="#">About us</a>
             </li>
             <li>
-              <a href="#">Marketing Plan</a>
+              <a href="#">Features</a>
             </li>
             <li>
-              <a href="#">Marketing Plan</a>
-            </li>
-            <li>
-              <a href="#">Marketing Plan</a>
+              <a href="#">Shop</a>
             </li>
           </ul>
         </div>
         <div class="col-sm-6 col-md-3 text-start">
-          <h5>contact us today</h5>
-          <ul>
+          <h5>Contact Us</h5>
+          <ul class="footer-list footer-contact mb-10">
             <li>
-              <a href="#">Marketing Plan</a>
+              <i class="pe-7s-call"></i> Phone:
+              {{
+                $store.state.websiteSettings.find(
+                  (one) => one.key === "contact_phone"
+                ).plain_value
+              }}
             </li>
             <li>
-              <a href="#">Marketing Plan</a>
+              <i class="pe-7s-mail"></i>
+              Email:
+              {{
+                $store.state.websiteSettings.find((one) => one.key === "email")
+                  .plain_value
+              }}
             </li>
             <li>
-              <a href="#">Marketing Plan</a>
-            </li>
-            <li>
-              <a href="#">Marketing Plan</a>
-            </li>
-            <li>
-              <a href="#">Marketing Plan</a>
+              <i class="pe-7s-call"></i> Address:
+              {{
+                $store.state.websiteSettings.find(
+                  (one) => one.key === "contact_address"
+                ).plain_value
+              }}
             </li>
           </ul>
         </div>
         <div class="col-sm-6 col-md-3 text-start">
-          <h5>Take A Survey</h5>
-          <ul>
-            <li>
-              <nuxt-link :to="localePath('/contact')">Contact</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link :to="localePath('/faq')">FAQs</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link :to="localePath('/policy')">Privacy Policy</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link :to="localePath('/terms')"
-                >Terms & Conditions</nuxt-link
-              >
+          <ul class="footer-list">
+            <!-- <li><a href="#">About Us</a></li> -->
+            <h5>other pages</h5>
+            <li v-for="page in $store.state.footerPages" :key="page.id">
+              <nuxt-link :to="localePath(generatePagePath(page.id))">{{
+                page.name
+              }}</nuxt-link>
             </li>
           </ul>
         </div>
@@ -112,7 +116,14 @@
     <div class="copyrights">
       <div class="row mx-0 align-items-center justify-content-between">
         <div class="col-auto">© 2023 • Laravada • Powered By: Rail Coder</div>
-        <div class="col-auto">Call Us +111111111111</div>
+        <div class="col-auto">
+          Call Us:
+          {{
+            $store.state.websiteSettings.find(
+              (one) => one.key === "contact_phone"
+            ).plain_value
+          }}
+        </div>
         <div class="col-auto">
           {{
             $store.state.websiteSettings.find((one) => one.key === "email")
@@ -132,7 +143,20 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    generatePagePath(id) {
+      switch (id) {
+        case 1:
+          return "/about";
+        case 2:
+          return "/contact";
+        case 3:
+          return "/terms";
+        case 4:
+          return "/policy";
+      }
+    },
+  },
   mounted() {},
 };
 </script>
