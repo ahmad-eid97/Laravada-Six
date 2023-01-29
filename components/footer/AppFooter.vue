@@ -23,51 +23,21 @@
           </p>
           <div class="col-auto socials">
             <a
-              :href="`https://${$store.state.footerData.facebook}`"
+              v-for="link in $store.state.socialLinks"
+              :key="link.key"
+              :href="link.url"
               target="_blank"
             >
-              <i class="fa-brands fa-facebook-f"></i>
+              <i :class="link.icon"></i>
             </a>
-            <!-- <a :href="`https://${$store.state.footerData.twitter}`" target="_blank" >
-                        <i icon="fa-brands fa-twitter" />
-                    </a> -->
-            <a
-              :href="`https://${$store.state.footerData.youtube}`"
-              target="_blank"
-            >
-              <i class="fa-brands fa-youtube"></i>
-            </a>
-            <a
-              :href="`https://${$store.state.footerData.instagram}`"
-              target="_blank"
-            >
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a
-              :href="`https://${$store.state.footerData.linkedin}`"
-              target="_blank"
-            >
-              <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-            <!-- <a :href="`https://${$store.state.footerData.tiktok}`" target="_blank" >
-                        <i icon="fa-brands fa-tiktok" />          
-                    </a> -->
           </div>
         </div>
         <div class="col-sm-6 col-md-3 text-start">
           <h5>usefull links</h5>
-          <ul>
-            <li>
-              <a href="#">Contact us</a>
-            </li>
-            <li>
-              <a href="#">About us</a>
-            </li>
-            <li>
-              <a href="#">Features</a>
-            </li>
-            <li>
-              <a href="#">Shop</a>
+          <ul class="footer-list">
+            <!-- <li><a href="#">About Us</a></li> -->
+            <li v-for="link in $store.state.usefulLinks" :key="link.id">
+              <a :href="link.url">{{ link.name }}</a>
             </li>
           </ul>
         </div>
@@ -105,9 +75,11 @@
             <!-- <li><a href="#">About Us</a></li> -->
             <h5>other pages</h5>
             <li v-for="page in $store.state.footerPages" :key="page.id">
-              <nuxt-link :to="localePath(generatePagePath(page.id))">{{
-                page.name
-              }}</nuxt-link>
+              <nuxt-link
+                :to="localePath(generatePagePath(page.id))"
+                v-if="page.status"
+                >{{ page.name }}</nuxt-link
+              >
             </li>
           </ul>
         </div>

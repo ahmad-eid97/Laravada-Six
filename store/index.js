@@ -9,6 +9,7 @@ export default () => {
       footerData: {},
       socialLinks: [],
       footerPages: [],
+      usefulLinks: [],
       cartItems: [],
       showLoader: false,
     },
@@ -31,6 +32,9 @@ export default () => {
       },
       getFooterPages(state, data) {
         state.footerPages = data;
+      },
+      getFooterUsefulLinks(state, data) {
+        state.usefulLinks = data;
       },
     },
     actions: {
@@ -57,6 +61,9 @@ export default () => {
 
           const PAGES = await this.$axios.get("/pages");
           commit("getFooterPages", PAGES.data.data.pages);
+
+          const USEFUL_LINKS = await this.$axios.get("/footer/useful-links");
+          commit("getFooterUsefulLinks", USEFUL_LINKS.data.data.data);
         }
       },
     },
