@@ -12,6 +12,7 @@ export default () => {
       usefulLinks: [],
       cartItems: [],
       showLoader: false,
+      showPopup: true,
     },
     getters: {},
     mutations: {
@@ -35,6 +36,9 @@ export default () => {
       },
       getFooterUsefulLinks(state, data) {
         state.usefulLinks = data;
+      },
+      closePopup(state, data) {
+        state.showPopup = data;
       },
     },
     actions: {

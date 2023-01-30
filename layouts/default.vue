@@ -6,6 +6,8 @@
     <router-view />
 
     <app-footer></app-footer>
+
+    <popup />
   </div>
 </template>
 
@@ -13,6 +15,7 @@
 import Loader from "../components/UIs/Loader.vue";
 import AppHeader from "../components/header/AppHeader.vue";
 import AppFooter from "../components/footer/AppFooter.vue";
+import popup from "../components/popup/Popup.vue";
 
 export default {
   name: "App",
@@ -20,6 +23,7 @@ export default {
     AppHeader,
     AppFooter,
     Loader,
+    popup,
   },
   watch: {
     $route(to, from) {

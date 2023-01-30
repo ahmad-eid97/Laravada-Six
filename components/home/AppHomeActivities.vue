@@ -23,7 +23,7 @@
             <div class="item">
               <div class="flip-box">
                 <div class="flip-box-front">
-                  <div class="flip-box-front-inner">
+                  <div class="flip-box-front-inner" v-if="activity.description">
                     <div class="flip-box-circle">
                       <i :class="activity.icon"></i>
                     </div>
