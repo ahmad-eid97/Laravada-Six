@@ -4,7 +4,7 @@
     <div class="side-bar-categories" v-if="blogDetails.features.length >= 1">
       <ul>
         <li v-for="feature in blogDetails.features" :key="feature">
-          <div class="line-circle"></div>
+          <i class="fa-solid fa-circle-dot"></i>
           <a href="#" target="_blank">{{ feature }}</a>
         </li>
       </ul>

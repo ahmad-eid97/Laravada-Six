@@ -293,6 +293,7 @@ export default {
 }
 .bost .item {
   display: flex;
+  gap: 20px;
   margin-bottom: 10px;
 }
 .bost .item i {
@@ -301,7 +302,7 @@ export default {
   font-size: 36px;
   padding: 22px;
   color: rgb(248, 96, 17);
-  margin-right: 20px;
+  /* margin-right: 20px; */
 }
 .bost .item .item-text h4 {
   font-size: 24px;

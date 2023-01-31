@@ -400,16 +400,22 @@ export default {
   padding: 0;
   background-color: #fff;
 }
+.contact-form .form-group.checkbox-option {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
 .contact-form .form-group.checkbox-option #chb2 {
-  position: absolute;
+  /* position: absolute;
   top: 6px;
-  left: 0;
+  left: 0; */
   height: 16px;
   width: 16px;
 }
 .contact-form .form-group.checkbox-option p {
   padding-left: 25px;
   font-size: 15px;
+  margin: 0;
 }
 .contact-form-area .section-title h2 {
   max-width: 600px;
@@ -493,9 +499,9 @@ export default {
   border: 1px solid #fff;
   margin-bottom: 10px;
   text-align: center;
-  position: absolute;
+  /* position: absolute;
   left: 0;
-  top: 0;
+  top: 0; */
 }
 .contact-info ul li .content h3 {
   font-size: 18px;
@@ -538,9 +544,9 @@ export default {
   position: relative;
 }
 .contact-form .agree-label input#chb1 {
-  position: absolute;
+  /* position: absolute;
   top: 5px;
-  left: 0;
+  left: 0; */
   width: auto;
   height: auto;
 }

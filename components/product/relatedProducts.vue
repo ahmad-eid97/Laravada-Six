@@ -36,20 +36,6 @@
           </div>
         </div>
       </div>
-
-      <div class="col-lg-12 col-md-12 text-center">
-        <div class="pagination-area">
-          <a href="#" class="page-numbers">
-            <i class="fa-solid fa-arrow-left"></i>
-          </a>
-          <span class="page-numbers current" aria-current="page">1</span>
-          <a href="#" class="page-numbers">2</a>
-          <a href="#" class="page-numbers">3</a>
-          <a href="#" class="page-numbers">
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
     </div>
   </div>
 </template>

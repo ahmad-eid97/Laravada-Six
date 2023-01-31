@@ -20,12 +20,14 @@
                     <i class="fa-solid fa-phone-volume"></i>
                   </div>
                   <i class="bx bx-phone-call"></i>
-                  <h3>Phone Number</h3>
-                  <a href="tel:+1(212)-255-5511">{{
-                    $store.state.websiteSettings.find(
-                      (one) => one.key === "contact_phone"
-                    ).plain_value
-                  }}</a>
+                  <div class="contentInnner">
+                    <h3>Phone Number</h3>
+                    <a href="tel:+1(212)-255-5511">{{
+                      $store.state.websiteSettings.find(
+                        (one) => one.key === "contact_phone"
+                      ).plain_value
+                    }}</a>
+                  </div>
                 </div>
               </li>
               <li>
@@ -33,12 +35,14 @@
                   <div class="icon">
                     <i class="fa-solid fa-location-dot"></i>
                   </div>
-                  <h3>Address</h3>
-                  <a href="#">{{
-                    $store.state.websiteSettings.find(
-                      (one) => one.key === "contact_address"
-                    ).plain_value
-                  }}</a>
+                  <div class="contentInnner">
+                    <h3>Address</h3>
+                    <a href="#">{{
+                      $store.state.websiteSettings.find(
+                        (one) => one.key === "contact_address"
+                      ).plain_value
+                    }}</a>
+                  </div>
                 </div>
               </li>
               <li>
@@ -46,12 +50,14 @@
                   <div class="icon">
                     <i class="fa-regular fa-message"></i>
                   </div>
-                  <h3>Contact Info</h3>
-                  <a href="mailto:hello@techex.com">{{
-                    $store.state.websiteSettings.find(
-                      (one) => one.key === "contact_email"
-                    ).plain_value
-                  }}</a>
+                  <div class="contentInnner">
+                    <h3>Contact Info</h3>
+                    <a href="mailto:hello@techex.com">{{
+                      $store.state.websiteSettings.find(
+                        (one) => one.key === "contact_email"
+                      ).plain_value
+                    }}</a>
+                  </div>
                 </div>
               </li>
             </ul>
@@ -297,7 +303,7 @@ export default {
 }
 .contact-form-area .contact-info {
   margin-bottom: 30px;
-  background-color: var(--main-color);
+  background-color: var(--secondary-color);
   padding: 52px 35px 22px;
   border-radius: 12px;
   position: relative;
@@ -325,8 +331,18 @@ export default {
 .contact-form-area .contact-info ul li {
   display: block;
   margin-bottom: 30px;
-  padding-left: 60px;
+  /* padding-left: 60px; */
   position: relative;
+}
+.contact-info ul li .content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  /* gap: 10px; */
+}
+
+.contact-info ul li .content .contentInnner {
+  margin: 0 10px;
 }
 .contact-info ul li .content .icon {
   width: 45px;
@@ -339,9 +355,9 @@ export default {
   border: 1px solid #fff;
   margin-bottom: 10px;
   text-align: center;
-  position: absolute;
+  /* position: absolute;
   left: 0;
-  top: 0;
+  top: 0; */
 }
 .contact-info ul li .content h3 {
   font-size: 18px;
@@ -384,9 +400,9 @@ export default {
   position: relative;
 }
 .contact-form .agree-label input#chb1 {
-  position: absolute;
+  /* position: absolute;
   top: 5px;
-  left: 0;
+  left: 0; */
   width: auto;
   height: auto;
 }
@@ -410,9 +426,17 @@ export default {
   border: none;
 }
 
+/* .contact-info * {
+  color: #000 !important;
+} */
+
 input.error,
 textarea.error {
   border-color: rgb(255, 101, 101) !important;
+}
+
+textarea {
+  height: 120px !important;
 }
 
 span.error {
