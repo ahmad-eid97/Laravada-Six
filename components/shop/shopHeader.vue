@@ -4,11 +4,11 @@
       <h3 class="col-12 text-center title">It's time for shopping with us</h3>
       <div class="col-12 text-center">
         <div class="breadcrumb">
-          <router-link to="/"> Home </router-link>
+          <nuxt-link :to="localePath('/')"> Home </nuxt-link>
           <a href="">
             <i class="fa-solid fa-angles-right"></i>
           </a>
-          <a href="#"> shop </a>
+          <nuxt-link :to="localePath('/our-shop')"> shop </nuxt-link>
         </div>
       </div>
     </div>
