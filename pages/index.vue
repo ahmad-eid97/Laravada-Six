@@ -7,8 +7,12 @@
     <app-home-brands :partners="partners"></app-home-brands>
     <app-home-bars></app-home-bars>
     <app-home-organisations></app-home-organisations>
-    <app-home-activities :activities="activities" />
-    <app-home-steps :steps="steps" />
+    <div v-if="activities.status">
+      <app-home-activities :activities="activities.data" />
+    </div>
+    <div v-if="steps.status">
+      <app-home-steps :steps="steps.data" />
+    </div>
     <app-home-bost></app-home-bost>
     <app-home-team></app-home-team>
     <app-home-blog :blogs="blogs"></app-home-blog>
@@ -142,8 +146,8 @@ export default {
       slides: slides.data.data.sliders,
       partners: partners.data.data.partners,
       blogs: blogs.data.data.blogs,
-      activities: activities.data.data,
-      steps: steps.data.data,
+      activities: activities.data,
+      steps: steps.data,
     };
   },
   components: {
