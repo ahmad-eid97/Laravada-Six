@@ -7,10 +7,10 @@
     <app-home-brands :partners="partners"></app-home-brands>
     <app-home-bars></app-home-bars>
     <app-home-organisations></app-home-organisations>
-    <div v-if="activities.status">
+    <div v-if="$store.state.sectionsStatus.activities">
       <app-home-activities :activities="activities.data" />
     </div>
-    <div v-if="steps.status">
+    <div v-if="$store.state.sectionsStatus.steps">
       <app-home-steps :steps="steps.data" />
     </div>
     <app-home-bost></app-home-bost>

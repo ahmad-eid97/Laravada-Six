@@ -12,6 +12,7 @@ export default () => {
       usefulLinks: [],
       cartItems: [],
       showLoader: false,
+      sectionsStatus: {},
       showPopup: true,
     },
     getters: {},
@@ -36,6 +37,9 @@ export default () => {
       },
       getFooterUsefulLinks(state, data) {
         state.usefulLinks = data;
+      },
+      getSectionsStatus(state, data) {
+        state.sectionsStatus = data;
       },
       closePopup(state, data) {
         state.showPopup = data;
@@ -68,6 +72,11 @@ export default () => {
 
           const USEFUL_LINKS = await this.$axios.get("/footer/useful-links");
           commit("getFooterUsefulLinks", USEFUL_LINKS.data.data.data);
+
+          const SECTIONS_STATUS = await this.$axios.get(
+            "/setting/all/section_status"
+          );
+          commit("getSectionsStatus", SECTIONS_STATUS.data.data);
         }
       },
     },
